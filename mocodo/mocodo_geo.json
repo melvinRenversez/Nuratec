@@ -1,0 +1,35 @@
+{
+  "width": 366,
+  "height": 535,
+  "cx": [
+    [ "TYPE_APPAREIL", 59 ],
+    [ "TYPER", 173 ],
+    [ "MARQUE_APPAREIL", 297 ],
+    [ "MODELE_APPAREIL", 173 ],
+    [ "CREER", 297 ],
+    [ "USERS", 59 ],
+    [ "IDENTIFIER", 173 ],
+    [ "CREDENTIALS", 297 ],
+    [ "COMMUNES", 173 ]
+  ],
+  "cy": [
+    [ "TYPE_APPAREIL", 44 ],
+    [ "TYPER", 44 ],
+    [ "MARQUE_APPAREIL", 44 ],
+    [ "MODELE_APPAREIL", 139 ],
+    [ "CREER", 139 ],
+    [ "USERS", 306 ],
+    [ "IDENTIFIER", 306 ],
+    [ "CREDENTIALS", 306 ],
+    [ "COMMUNES", 482 ]
+  ],
+  "shift": [
+    [ "TYPER,TYPE_APPAREIL,0", 0 ],
+    [ "TYPER,MARQUE_APPAREIL,0", 0 ],
+    [ "CREER,MARQUE_APPAREIL,0", 0 ],
+    [ "CREER,MODELE_APPAREIL,0", 0 ],
+    [ "IDENTIFIER,USERS,0", 0 ],
+    [ "IDENTIFIER,CREDENTIALS,0", 0 ]
+  ],
+  "ratio": []
+}

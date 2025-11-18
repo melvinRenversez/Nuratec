@@ -1,0 +1,212 @@
+
+<?php 
+
+
+include("../php/database.php");
+
+$query = "select id, nom from communes";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$communes = $stmt->fetchAll();
+
+
+$query = "select id, code_postal, commune_id from codes_postaux";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$codes_postaux = $stmt->fetchAll();
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+
+   <link rel="stylesheet" href="../assets/css/logInOut.css">
+
+</head>
+
+<body>
+
+
+   <div class="overlay">
+
+
+      <div class="container" id="container">
+
+
+
+         <div class="left">
+
+            <p id="switch">Vous avez deja un compte ?</p>
+
+            <h3>Insciption</h3>
+
+            <form action="">
+
+               <div class="field">
+                  <input type="text" placeholder=" " required>
+                  <label for="">Nom</label>
+               </div>
+
+               <div class="field">
+                  <input type="text" placeholder=" " required>
+                  <label for="">Prénom</label>
+               </div>
+
+               <div class="field">
+                  <input type="email" placeholder=" " required id="mailInput">
+                  <label for="">Email</label>
+               </div>
+
+               <div class="field">
+                  <input type="text" placeholder=" " required>
+                  <label for="">Telephone</label>
+               </div>
+
+               <div class="field">
+                  <input type="text" placeholder=" " required>
+                  <label for="">Adresse</label>
+               </div>
+
+               <div class="field">
+                  <input list="villeList" type="text" placeholder=" " required id="villeInput">
+                  <label for="">Ville</label>
+
+                  <input type="hidden" id="villeInputHidden">
+
+               </div>
+
+               <datalist id="villeList">
+
+                  <?php foreach ($communes as $commune) { ?>
+                     <option value="<?= $commune['nom'] ?>"></option>
+                  <?php } ?>
+                  
+               </datalist>
+
+               <div class="field">
+                  <input type="text" placeholder=" " required list="codeList">
+                  <label for="">Code postal</label>
+               </div>
+
+               <datalist id="codeList">
+
+               </datalist>
+
+               <div class="field">
+                  <input type="password" placeholder=" " required>
+                  <label for="">Mot de passe</label>
+               </div>
+
+               <div class="field">
+                  <input type="password" placeholder=" " required>
+                  <label for="">Confirmer le mot de passe</label>
+               </div>
+
+               <button type="submit">S'inscrire</button>
+
+
+            </form>
+
+         </div>
+
+
+
+         <div class="right">
+
+            <p id="switch">Vous n'avez pas de compte ?</p>
+
+            <h3>Connexion</h3>
+            <form action="">
+
+
+               <div class="field">
+                  <input type="email" placeholder=" " required>
+                  <label for="">Email</label>
+               </div>
+
+               <div class="field">
+                  <input type="password" placeholder=" " required>
+                  <label for="">Mot de passe</label>
+               </div>
+
+               <button type="submit">Connexion</button>
+            </form>
+
+
+
+         </div>
+
+      </div>
+
+
+
+   </div>
+
+
+
+</body>
+
+<script>
+const allSwitch = document.querySelectorAll('#switch');
+const container = document.getElementById('container');
+
+const communes = <?php echo json_encode($communes); ?>;
+const codes_postaux = <?php echo json_encode($codes_postaux); ?>;
+
+const villeInput = document.getElementById('villeInput');
+const villeInputHidden = document.getElementById('villeInputHidden');
+
+const codeListInput = document.getElementById('codeList');
+
+const mailInput = document.getElementById('mailInput');
+
+console.log(mailInput)
+
+
+console.log(allSwitch);
+
+allSwitch.forEach(element => {
+   
+   element.addEventListener('click', () => {
+      console.log('clicked');
+      container.classList.toggle('active');
+   });
+   
+});
+
+
+villeInput.addEventListener('change', () => {
+   const ville = villeInput.value;
+   dataVille = communes.find(c => c.nom === ville);
+   villeInputHidden.value = dataVille.id;
+
+   const codes = codes_postaux
+      .filter(c => c.commune_id == dataVille.id)
+      .map(c => c.code_postal);
+
+   console.log(codes);
+
+   codeListInput.innerHTML = '';
+   codes.forEach(code => {
+      const option = document.createElement('option');
+      option.value = code;
+      codeListInput.appendChild(option);
+   });
+})
+
+
+mailInput.addEventListener('change', () => {
+   console.log(mail.contain("@"));
+   console.log('Mail changed to: ' + mail);
+});
+
+
+</script>
+
+</html>

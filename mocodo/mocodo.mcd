@@ -1,0 +1,14 @@
+type_appareil: id, libelle
+typer, 0N type_appareil, 11 marque_appareil
+marque_appareil: id, libelle
+
+:
+modele_appareil: id, libelle
+creer, 0N marque_appareil, 11 modele_appareil
+
+users: id, nom, prenom, mail, telephone, ville, code_postal, adresse, created_at, updated_at
+identifier, 11 users, 11 credentials
+credentials: user_id, password_hash, created_at, updated_at
+
+
+communes: id, nom, code_postal

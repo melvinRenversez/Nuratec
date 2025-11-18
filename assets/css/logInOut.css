@@ -1,0 +1,191 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   display: flex;
+
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   background: #141313ff;
+}
+
+.overlay {
+   background: #252424;
+   width: 500px;
+
+   border-radius: 5px;
+
+   overflow: hidden;
+}
+
+.container {
+   display: flex;
+   /* gap: 50px; */
+   width: 200%;
+   transition: all 0.5s ease-in-out;
+
+   color: #eee;
+
+   /* background: red; */
+}
+
+.container.active {
+   transform: translateX(-50%);
+}
+
+.left,
+.right {
+
+   position: relative;
+
+   padding: 30px;
+   width: 50%;
+
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+}
+
+/* .left {
+   background: blue;
+}
+
+.left {
+   background: orange;
+} */
+
+h3 {
+   text-align: center;
+
+   font-size: 26px;
+}
+
+form {
+
+   display: flex;
+   flex-direction: column;
+
+
+   align-items: center;
+   justify-content: center;
+
+   gap: 40px;
+
+   /* background: blue; */
+
+   flex: 1;
+
+}
+
+form .field {
+   position: relative;
+
+   width: 90%;
+}
+
+form .field input {
+   width: 100%;
+
+   background: transparent;
+
+   border: none;
+
+   border-bottom: 2px solid #adadad;
+
+   outline: none;
+
+   /* background: red; */
+
+   height: 30px;
+
+   padding-left: 10px;
+
+   color: #eee;
+}
+
+form .field label {
+   position: absolute;
+
+   left: 10px;
+   bottom: 5px;
+
+   transition: all 0.3s ease-in-out;
+
+   pointer-events: none;
+}
+
+form .field input:focus~label,
+form .field input:valid~label,
+form .field input:hover~label,
+form .field input:not(:placeholder-shown)~label {
+   left: 0;
+   bottom: 30px;
+   
+   /* font-size: 12px; */
+   transition: all 0.3s ease-in-out;
+
+}
+
+button {
+   width: 90%;
+
+   border: 2px solid #efefef;
+   background: transparent;
+   padding: 10px ;
+   cursor: pointer;
+
+   font-weight: bold;
+
+   transition: all 0.3s ease-in-out;
+
+   margin-bottom: 20px;
+
+   color: #eee;
+}
+
+button:hover {
+   background: #eee;
+   color: #222;
+   border: 2px solid #000;
+}
+
+
+#switch {
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+
+   cursor: pointer;
+
+   /* position: relative; */
+
+   width: min-content;
+   white-space: nowrap;
+
+   padding: 0 5px;
+}
+
+#switch::after {
+   content: '';
+   
+   position: absolute;
+   
+   width: 0%;
+   height: 2px;
+
+   bottom: -3px;
+   left: 0;
+
+   background: #eee;
+
+   transition: all 0.3s ease-in-out;
+}
+
+#switch:hover::after {
+   width: 100%;
+}
+
