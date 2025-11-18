@@ -82,7 +82,7 @@ CREATE TABLE codes_postaux (
 );
 
 
-select * from communes;
+select * from communes where nom like "%aubry%";
 select * from codes_postaux;
 
 delete from codes_postaux where id between 1 and 10000000000;
@@ -91,5 +91,13 @@ delete from communes where id between 1 and 10000000000;
 ALTER TABLE communes AUTO_INCREMENT = 1;
 ALTER TABLE codes_postaux AUTO_INCREMENT = 1;
 
+select count(commune_id)
+from codes_postaux
+group by commune_id
+having count(commune_id) > 15
+;
 
+select * from communes where nom = 'Taiarapu-Est';
+
+select * from codes_postaux where commune_id = 34924;
 
