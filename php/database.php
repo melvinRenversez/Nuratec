@@ -1,6 +1,6 @@
 <?php
-$host = "91.168.244.154"; 
-$port = "51336";      
+$host = "192.168.0.100"; 
+$port = "3306";      
 $dbname = "nuratec";
 $username = "nuratec_user";
 $password = "Nura!Ec2025#Db";

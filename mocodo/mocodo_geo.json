@@ -1,16 +1,20 @@
 {
-  "width": 366,
-  "height": 535,
+  "width": 365,
+  "height": 576,
   "cx": [
     [ "TYPE_APPAREIL", 59 ],
-    [ "TYPER", 173 ],
-    [ "MARQUE_APPAREIL", 297 ],
-    [ "MODELE_APPAREIL", 173 ],
-    [ "CREER", 297 ],
+    [ "TYPER", 172 ],
+    [ "MARQUE_APPAREIL", 296 ],
+    [ "MODELE_APPAREIL", 172 ],
+    [ "CREER", 296 ],
     [ "USERS", 59 ],
-    [ "IDENTIFIER", 173 ],
-    [ "CREDENTIALS", 297 ],
-    [ "COMMUNES", 173 ]
+    [ "IDENTIFIER", 172 ],
+    [ "CREDENTIALS", 296 ],
+    [ "VIVRE", 59 ],
+    [ "DEPARTEMENTER", 172 ],
+    [ "COMMUNES", 59 ],
+    [ "CODER", 172 ],
+    [ "CODES_POSTAUX", 296 ]
   ],
   "cy": [
     [ "TYPE_APPAREIL", 44 ],
@@ -18,10 +22,14 @@
     [ "MARQUE_APPAREIL", 44 ],
     [ "MODELE_APPAREIL", 139 ],
     [ "CREER", 139 ],
-    [ "USERS", 306 ],
-    [ "IDENTIFIER", 306 ],
-    [ "CREDENTIALS", 306 ],
-    [ "COMMUNES", 482 ]
+    [ "USERS", 288 ],
+    [ "IDENTIFIER", 288 ],
+    [ "CREDENTIALS", 288 ],
+    [ "VIVRE", 428 ],
+    [ "DEPARTEMENTER", 428 ],
+    [ "COMMUNES", 523 ],
+    [ "CODER", 523 ],
+    [ "CODES_POSTAUX", 523 ]
   ],
   "shift": [
     [ "TYPER,TYPE_APPAREIL,0", 0 ],
@@ -29,7 +37,13 @@
     [ "CREER,MARQUE_APPAREIL,0", 0 ],
     [ "CREER,MODELE_APPAREIL,0", 0 ],
     [ "IDENTIFIER,USERS,0", 0 ],
-    [ "IDENTIFIER,CREDENTIALS,0", 0 ]
+    [ "IDENTIFIER,CREDENTIALS,0", 0 ],
+    [ "VIVRE,USERS,0", 0 ],
+    [ "VIVRE,COMMUNES,0", 0 ],
+    [ "DEPARTEMENTER,USERS,0", 0 ],
+    [ "DEPARTEMENTER,CODES_POSTAUX,0", 0 ],
+    [ "CODER,COMMUNES,0", 0 ],
+    [ "CODER,CODES_POSTAUX,0", 0 ]
   ],
   "ratio": []
 }

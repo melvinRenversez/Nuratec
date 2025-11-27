@@ -189,3 +189,17 @@ button:hover {
    width: 100%;
 }
 
+form .error,
+form .error input,
+form .error label{
+   color: #cf1f1f !important;
+   border-color: #cf1f1f !important;
+
+}
+
+.good,
+.good input,
+.good label{
+   color: #31811d !important;
+   border-color: #31811d !important;
+}

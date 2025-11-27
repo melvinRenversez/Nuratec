@@ -97,7 +97,67 @@ group by commune_id
 having count(commune_id) > 15
 ;
 
-select * from communes where nom = 'Taiarapu-Est';
+select * from communes where nom like '%Aubry%';
 
-select * from codes_postaux where commune_id = 34924;
+select * from codes_postaux where commune_id = 21773;
 
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    mail VARCHAR(150) UNIQUE NOT NULL,
+    telephone VARCHAR(20),
+    adresse VARCHAR(255),
+    ville_id INT,
+    code_postal_id INT,
+    FOREIGN KEY (ville_id) REFERENCES communes(id) ON DELETE SET NULL,
+    FOREIGN KEY (code_postal_id) REFERENCES codes_postaux(id) ON DELETE SET NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
+
+CREATE TABLE credentials (
+    user_id INT PRIMARY KEY,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+
+select nuratec.verifyPassword('Melvin', hashPassword('Melvin'));
+
+insert into users(nom, prenom, mail, telephone, adresse, ville_id, code_postal_id) values (
+'melvin',
+'renversez',
+'mail@gmail.Com',
+'0606060606',
+'31 ville de la ville',
+'21773',
+'22088'
+);
+
+
+insert into credentials (user_id, password_hash) values (
+2,
+hashPassword('melvinmdp')
+);
+
+select * from users;
+select * from credentials;
+
+select u.id, nom, prenom, mail, password_hash
+from users u
+join credentials c on c.user_id = u.id
+where mail = 'mail@gmail.com';
+
+
+
+SELECT u.id as user_id, verifyPassword('melvinmdp', password_hash) AS password_match
+FROM users u
+JOIN credentials c ON c.user_id = u.id
+WHERE mail = 'mail@gmail.com';

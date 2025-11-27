@@ -1,7 +1,7 @@
 
 <?php
 
-include("./php/database.php");
+include("./php/database.php");   
 
 
 $typeListe = [];

@@ -99,12 +99,12 @@ $codes_postaux = $stmt->fetchAll();
                </datalist>
 
                <div class="field">
-                  <input type="password" placeholder=" " required>
+                  <input type="password" placeholder=" " required id="mdpInput" minlength="8">
                   <label for="">Mot de passe</label>
                </div>
 
-               <div class="field">
-                  <input type="password" placeholder=" " required>
+               <div class="field" id="fieldPassConf">
+                  <input type="password" placeholder=" " required id="mdpConfInput" minlength="8">
                   <label for="">Confirmer le mot de passe</label>
                </div>
 
@@ -131,7 +131,7 @@ $codes_postaux = $stmt->fetchAll();
                </div>
 
                <div class="field">
-                  <input type="password" placeholder=" " required>
+                  <input type="password" placeholder=" " required minlength="8">
                   <label for="">Mot de passe</label>
                </div>
 
@@ -165,6 +165,12 @@ const villeInputHidden = document.getElementById('villeInputHidden');
 const codeListInput = document.getElementById('codeList');
 
 const mailInput = document.getElementById('mailInput');
+
+
+const mdpInput = document.getElementById('mdpInput');
+const mdpConfInput = document.getElementById('mdpConfInput');
+const fieldPassConf = document.getElementById('fieldPassConf'); 
+
 
 console.log(mailInput)
 
@@ -204,6 +210,57 @@ villeInput.addEventListener('change', () => {
 mailInput.addEventListener('change', () => {
    console.log(mail.contain("@"));
    console.log('Mail changed to: ' + mail);
+});
+
+
+console.log('mdpInput:', mdpInput);
+
+mdpInput.addEventListener('input', () => {
+
+   console.log('mdp changed to: ' + mdpInput.value);
+   console.log('mdpConf is: ' + mdpConfInput.value);
+
+   if(mdpInput.value.length < 8) {
+      mdpInput.classList.add('error');
+      mdpInput.classList.remove('good');
+   }else {
+      mdpInput.classList.add('good');
+      mdpInput.classList.remove('error');
+   }
+
+   if(mdpInput.value !== mdpConfInput.value) {
+      mdpConfInput.setCustomValidity("Les mots de passe ne correspondent pas");
+
+      fieldPassConf.classList.add('error');
+      fieldPassConf.classList.remove("good")
+
+   } else {
+      mdpConfInput.setCustomValidity("");
+
+      fieldPassConf.classList.remove('error');
+      fieldPassConf.classList.add("good")
+
+   }
+});
+
+mdpConfInput.addEventListener('input', () => {
+
+   console.log('mdp changed to: ' + mdpInput.value);
+   console.log('mdpConf is: ' + mdpConfInput.value);
+
+   if(mdpInput.value !== mdpConfInput.value) {
+      mdpConfInput.setCustomValidity("Les mots de passe ne correspondent pas");
+
+      fieldPassConf.classList.add('error');
+      fieldPassConf.classList.remove("good")
+
+   } else {
+      mdpConfInput.setCustomValidity("");
+
+      fieldPassConf.classList.remove('error');
+      fieldPassConf.classList.add("good")
+
+   }
 });
 
 
