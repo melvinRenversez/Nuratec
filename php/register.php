@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include("./database.php");
 
@@ -19,7 +19,7 @@ $mdpConf = $_POST["mdpConf"];
 if (!isset($nom) || !isset($prenom) || !isset($mail) || !isset($telephone) || !isset($adresse) || !isset($ville) || !isset($code_postal) || !isset($mdp) || !isset($mdpConf)) {
     header("Location: ../pages/logInOut.php?error=emptyFields   ");
     exit();
-} 
+}
 
 if ($mdp !== $mdpConf) {
     header("Location: ../pages/logInOut.php?error=passwordsDontMatch");
@@ -31,14 +31,14 @@ $query = 'insert into users(nom, prenom, mail, telephone, adresse, ville_id, cod
 
 $stmt = $db->prepare($query);
 $stmt->execute(array(
-   ':nom' => $nom,
-   ':prenom' => $prenom,
-   ':mail' => $mail,
-   ':telephone' => $telephone,
-   ':adresse' => $adresse,
-   ':ville' => $ville,
-   ':code_postal' => $code_postal,
-   ':mdp' => $mdp
+    ':nom' => $nom,
+    ':prenom' => $prenom,
+    ':mail' => $mail,
+    ':telephone' => $telephone,
+    ':adresse' => $adresse,
+    ':ville' => $ville,
+    ':code_postal' => $code_postal,
+    ':mdp' => $mdp
 ));
 
 
