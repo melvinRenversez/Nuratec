@@ -32,6 +32,10 @@ $codes_postaux = $stmt->fetchAll();
 
 <body>
 
+<a href="../index.php" class="return">
+   Retour
+</a>
+
 
    <div class="overlay">
 
@@ -46,38 +50,38 @@ $codes_postaux = $stmt->fetchAll();
 
             <h3>Insciption</h3>
 
-            <form action="">
+            <form action="../php/register.php" method="POST">
 
                <div class="field">
-                  <input type="text" placeholder=" " required>
+                  <input type="text" placeholder=" " required name="nom">
                   <label for="">Nom</label>
                </div>
 
                <div class="field">
-                  <input type="text" placeholder=" " required>
+                  <input type="text" placeholder=" " required name="prenom">
                   <label for="">Prénom</label>
                </div>
 
                <div class="field">
-                  <input type="email" placeholder=" " required id="mailInput">
+                  <input type="email" placeholder=" " required id="mailInput" name="mail">
                   <label for="">Email</label>
                </div>
 
                <div class="field">
-                  <input type="text" placeholder=" " required>
+                  <input type="text" placeholder=" " required name="telephone">
                   <label for="">Telephone</label>
                </div>
 
                <div class="field">
-                  <input type="text" placeholder=" " required>
+                  <input type="text" placeholder=" " required name="adresse">
                   <label for="">Adresse</label>
                </div>
 
                <div class="field">
-                  <input list="villeList" type="text" placeholder=" " required id="villeInput">
+                  <input list="villeList" type="text" placeholder=" " required id="villeInput" >
                   <label for="">Ville</label>
 
-                  <input type="hidden" id="villeInputHidden">
+                  <input type="hidden" id="villeInputHidden" name="ville">
 
                </div>
 
@@ -90,8 +94,10 @@ $codes_postaux = $stmt->fetchAll();
                </datalist>
 
                <div class="field">
-                  <input type="text" placeholder=" " required list="codeList">
+                  <input type="text" placeholder=" " required list="codeList" id="codeInput" >
                   <label for="">Code postal</label>
+
+                  <input type="hidden" id="codeInputHidden" name="code_postal" >
                </div>
 
                <datalist id="codeList">
@@ -99,12 +105,12 @@ $codes_postaux = $stmt->fetchAll();
                </datalist>
 
                <div class="field">
-                  <input type="password" placeholder=" " required id="mdpInput" minlength="8">
+                  <input type="password" placeholder=" " required id="mdpInput" minlength="8" name="mdp">
                   <label for="">Mot de passe</label>
                </div>
 
                <div class="field" id="fieldPassConf">
-                  <input type="password" placeholder=" " required id="mdpConfInput" minlength="8">
+                  <input type="password" placeholder=" " required id="mdpConfInput" minlength="8" name="mdpConf">
                   <label for="">Confirmer le mot de passe</label>
                </div>
 
@@ -164,6 +170,9 @@ const villeInputHidden = document.getElementById('villeInputHidden');
 
 const codeListInput = document.getElementById('codeList');
 
+const codeInput = document.getElementById('codeInput');
+const codeInputHidden = document.getElementById('codeInputHidden');
+
 const mailInput = document.getElementById('mailInput');
 
 
@@ -204,6 +213,15 @@ villeInput.addEventListener('change', () => {
       option.value = code;
       codeListInput.appendChild(option);
    });
+})
+
+codeInput.addEventListener('change', () => {
+   console.log('code changed to: ' + codeInput.value);
+   const code = codeInput.value;
+   console.log(codes_postaux);
+   codeId = codes_postaux.find(c => c.code_postal == code).id;
+   console.log(codeId);
+   codeInputHidden.value = codeId;
 })
 
 

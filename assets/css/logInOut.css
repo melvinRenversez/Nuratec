@@ -203,3 +203,33 @@ form .error label{
    color: #31811d !important;
    border-color: #31811d !important;
 }
+
+a {
+
+   position: absolute;
+
+   top: 10px;
+   left: 10px;
+
+   padding: 10px 20px;
+
+   text-decoration: none;
+
+   border: 2px solid #efefef;
+   background: transparent;
+   cursor: pointer;
+
+   font-weight: bold;
+
+   transition: all 0.3s ease-in-out;
+
+   margin-bottom: 20px;
+
+   color: #eee;
+}
+
+a:hover {
+   background: #eee;
+   color: #222;
+   border: 2px solid #000;
+}
