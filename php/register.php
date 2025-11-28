@@ -2,8 +2,6 @@
 
 include("./database.php");
 
-echo "Register";
-
 $nom = $_POST["nom"];
 $prenom = $_POST["prenom"];
 $mail = $_POST["mail"];
@@ -13,6 +11,9 @@ $ville = $_POST["ville"];
 $code_postal = $_POST["code_postal"];
 $mdp = $_POST["mdp"];
 $mdpConf = $_POST["mdpConf"];
+
+
+echo $nom . " " . $prenom . " " . $mail . " " . $telephone . " " . $adresse . " " . $ville . " " . $code_postal . " " . $mdp . " " . $mdpConf;
 
 
 
@@ -27,7 +28,8 @@ if ($mdp !== $mdpConf) {
 }
 
 
-$query = 'insert into users(nom, prenom, mail, telephone, adresse, ville_id, code_postal_id) values (:nom, :prenom, :mail, :telephone, :adresse, :ville, :code_postal, :mdp);';
+$query = 'insert into users(nom, prenom, mail, telephone, adresse, ville_id, code_postal_id) 
+                    values (:nom, :prenom, :mail, :telephone, :adresse, :ville, :code_postal);';
 
 $stmt = $db->prepare($query);
 $stmt->execute(array(
@@ -37,11 +39,23 @@ $stmt->execute(array(
     ':telephone' => $telephone,
     ':adresse' => $adresse,
     ':ville' => $ville,
-    ':code_postal' => $code_postal,
+    ':code_postal' => $code_postal
+));
+
+$user_id = $db->lastInsertId();
+
+echo $user_id;
+
+
+
+$query = 'insert into credentials(user_id, password_hash) values (:user_id, hashPassword(:mdp));';
+$stmt = $db->prepare($query);
+$stmt->execute(array(
+    ':user_id' => $user_id,
     ':mdp' => $mdp
 ));
 
-
-
+header("Location: ../pages/logInOut.php?error=OK");
+exit();
 
 ?>

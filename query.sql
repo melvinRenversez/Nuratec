@@ -22,8 +22,19 @@ CREATE TABLE modele_appareil (
     FOREIGN KEY (marque_id) REFERENCES marque_appareil(id) ON DELETE CASCADE
 );
 
+create TABLE prise_en_charge (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    libelle VARCHAR(255) NOT NULL
+);
+
+insert into prise_en_charge (libelle) VALUES (
+'Ecran'),
+('Batterie'),
+('Connecteur de charge'),
+('Camera');
 
 
+select * from prise_en_charge;
 -- Insertion des types d'appareils
 INSERT INTO type_appareil (libelle) VALUES
 ('Smartphone'),
@@ -161,3 +172,22 @@ SELECT u.id as user_id, verifyPassword('melvinmdp', password_hash) AS password_m
 FROM users u
 JOIN credentials c ON c.user_id = u.id
 WHERE mail = 'mail@gmail.com';
+
+
+select * from codes_postaux;
+
+select * 
+from users u
+join codes_postaux cp on cp.id = u.code_postal_id
+join communes co on co.id = u.ville_id;
+
+
+select u.id 
+from users u 
+join credentials c on c.user_id = u.id
+where u.mail = 'melvinrenversez003@gmail.com' and verifyPassword('tretretre' , c.password_hash);
+
+
+
+
+

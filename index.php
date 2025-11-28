@@ -1,7 +1,7 @@
 
 <?php
-
-include("./php/database.php");   
+session_start();
+include("./php/database.php");
 
 
 $typeListe = [];
@@ -40,9 +40,288 @@ $modeleListe = $stmt->fetchAll();
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 
-   <link rel="stylesheet" href="./assets/css/index.css">
-
 </head>
+
+<style>
+   * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background: #141313ff;
+}
+
+section.reparation {
+   width: 400px;
+   margin: 50px auto;
+   padding: 20px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 60%;
+
+   background: #242121ff;
+
+   translate: translateY(-50%);
+
+}
+
+section.reparation form {
+
+   display: flex;
+
+
+   align-items: center;
+
+}
+
+section.reparation .field {
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 15px;
+   flex: 1;
+   margin-right: 10px;
+
+   padding: 5px 20px;
+}
+
+section.reparation .field label {
+   margin-right: 0;
+   font-weight: bold;
+   margin-bottom: 5px;
+
+   color: #ddd
+}
+
+section.reparation .field select {
+   padding: 8px;
+
+   /* appearance: none; */
+
+   background: transparent;
+
+   color: #ddd;
+
+
+   border: none;
+   border-bottom: 1px solid #ccc;
+
+   border-radius: 0px;
+
+   outline: none;
+
+   cursor: pointer;
+
+}
+
+select,
+select::picker(select) {
+   appearance: base-select;
+}
+
+select::picker(select) {
+   background: transparent;
+   backdrop-filter: blur(12px);
+
+   border: none;
+
+}
+
+section.reparation .field select option {
+   background: transparent;
+   backdrop-filter: blur(10px);
+   color: #ddd;
+   padding: 10px;
+}
+
+section.reparation .field select:disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+}
+
+section.reparation .field select option:hover {
+   background: #333;
+}
+
+section.reparation button {
+   height: min-content;
+   padding: 10px 15px;
+
+   background: transparent;
+
+   border: 2px solid #eee;
+   border-radius: 4px;
+
+   color: black;
+
+   cursor: pointer;
+   padding: 15px 80px;
+
+   margin-left: 50px;
+
+   font-size: 15px;
+
+   justify-content: center;
+   align-items: center;
+   display: flex;
+   gap: 10px;
+   font-weight: bold;
+
+   position: relative;
+
+   overflow: hidden;
+
+}
+
+section.reparation button span {
+   z-index: 1;
+
+   color: #eee;
+
+   transition: color 0.3s ease-in-out;
+}
+
+section.reparation button svg {
+   z-index: 1;
+}
+
+section.reparation button svg path {
+   stroke-width: 2.5px;
+   stroke: #eee;
+   width: 20px;
+   height: 20px;
+
+
+   transition: 0.3s ease-in-out;
+}
+
+section.reparation button .slider {
+   width: 110%;
+   height: 150%;
+   /* background: red; */
+
+
+   background: linear-gradient(135deg, #0A0A0A, #141414, #3A3A3A, #141414, #0A0A0A);
+
+   box-shadow: 25px 0px 38px 8px rgba(58, 58, 58, 0.82);
+
+
+   position: absolute;
+
+   left: -15px;
+   top: -15px;
+
+   transform: rotate(3deg) translate(-100%);
+
+   opacity: 0.3;
+
+   transition: transform 0.3s ease-in-out, opacity 0.5s ease-in-out;
+
+   z-index: 0;
+}
+
+section.reparation button:hover span,
+section.reparation button:hover svg path {
+   color: white;
+   stroke: white;
+}
+
+section.reparation button:hover .slider {
+   opacity: 1;
+   transform: rotate(3deg) translate(0%);
+}
+
+section.titre {
+   text-align: center;
+   margin-top: 50px;
+   padding-bottom: 100px;
+   color: #eee;
+
+   font-size: 80px;
+
+   border-bottom: 2px solid #eee;
+}
+
+section.nav {
+   display: flex;
+   justify-content: flex-end;
+}
+
+section.nav nav {
+   /* background: #3A3A3A; */
+
+   width: min-content;
+   padding: 30px;
+}
+
+section.nav nav ul {
+   list-style: none;
+   display: flex;
+   gap: 20px;
+   padding: 10px 20px;
+
+   /* width: auto; */
+
+   align-items: center;
+   justify-content: center;
+}
+
+section.nav nav ul li a {
+   text-decoration: none;
+   color: #eee;
+   font-weight: bold;
+   font-size: 18px;
+
+   position: relative;
+
+   padding: 10px;
+
+   /* width: auto; */
+
+   text-align: center;
+
+   white-space: nowrap;
+}
+
+
+section.nav nav ul li a::before {
+   content: ' ';
+
+   position: absolute;
+
+   bottom: 0;
+   left: 0;
+
+   display: block;
+
+   width: 0%;
+   height: 2px;
+
+   background: #eee;
+   transition: width 0.3s;
+}
+
+
+section.nav nav ul li a:hover::before {
+   width: 100%;
+}
+
+section.nav nav ul li a.actif::before {
+   width: 100%;
+}
+
+button:disabled,
+button:disabled span,
+button:disabled svg path {
+   opacity: 0.5;
+   cursor: not-allowed;
+   border-color: #9e1212 !important;
+   color: #9e1212 !important;
+   stroke: #9e1212 !important;
+}
+</style>
 
 <body>
 
@@ -54,9 +333,31 @@ $modeleListe = $stmt->fetchAll();
                Accueil
             </a>
          </li>
-         <li>
-            <a href="./pages/logInOut.php">Connection</a>
-         </li>
+
+         <?php
+         if (isset($_SESSION["id"])) {
+            ?>
+            <li>
+               <a href="./pages/reparation.php">Reparation</a>
+            </li>
+            <li>
+               <a href="">Mon compte</a>
+            </li>
+            <li>
+               <a href="./php/logout.php">Deconnection</a>
+            </li>
+            <?php
+         } else {
+            ?>
+
+
+   <li>
+      <a href="./pages/logInOut.php">Connection</a>
+   </li>
+
+   <?php
+         }
+         ?>
       </ul>
    </nav>
 </section>
@@ -67,14 +368,14 @@ $modeleListe = $stmt->fetchAll();
 
    <section class="reparation">
 
-      <form action="">
+      <form action="./pages/reparation.php" method="GET">
 
          <div class="field">
             <label for="">Type d'appareil</label>
-            <select name="" id="type-select">
+            <select name="type" id="type-select">
                <option value=""> -- Type d'appareil --</option>
-               <?php foreach ($typeListe as $key => $type) : ?>
-                  <option value="<?php echo $type["id"]; ?>"><?php echo $type["libelle"]; ?></option>   
+               <?php foreach ($typeListe as $key => $type): ?>
+                     <option value="<?php echo $type["id"]; ?>"><?php echo $type["libelle"]; ?></option>   
                <?php endforeach; ?>
             </select>
          </div>
@@ -82,7 +383,7 @@ $modeleListe = $stmt->fetchAll();
 
          <div class="field">
             <label for="">Marque</label>
-            <select name="" id="marque-select" disabled>
+            <select name="marque" id="marque-select" disabled>
                <option value=""> -- Marque --</option>
                
             </select>
@@ -90,7 +391,7 @@ $modeleListe = $stmt->fetchAll();
          
          <div class="field">
             <label for="">Model</label>
-            <select name="" id="model-select" disabled>
+            <select name="model" id="model-select" disabled>
                <option value=""> -- Model --</option>
             </select>
          </div>

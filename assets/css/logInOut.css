@@ -233,3 +233,16 @@ a:hover {
    color: #222;
    border: 2px solid #000;
 }
+
+.popup {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+
+   background: #333333EE;
+
+   padding: 10px  30px;
+
+   color: #eee;
+
+}

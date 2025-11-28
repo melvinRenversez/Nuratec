@@ -236,6 +236,8 @@ section.nav nav ul li a {
    /* width: auto; */
 
    text-align: center;
+
+   white-space: nowrap;
 }
 
 

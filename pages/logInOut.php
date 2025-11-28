@@ -32,6 +32,27 @@ $codes_postaux = $stmt->fetchAll();
 
 <body>
 
+<?php 
+
+if (isset($_GET["error"])) {
+   if (isset($_GET["error"]) && $_GET["error"] == "emptyFields") {
+      echo "<div class='popup'>Veuillez remplir tous les champs</div>";
+   } else if (isset($_GET["error"]) && $_GET["error"] == "passwordsDontMatch") {
+      echo "<div class='popup'>Les mots de passe ne correspondent pas</div>";
+   } else if (isset($_GET["error"]) && $_GET["error"] == "emailAlreadyExists") {
+      echo "<div class='popup'>Cet email est deja utilise</div>";
+   } else if (isset($_GET["error"]) && $_GET["error"] == "phoneAlreadyExists") {
+      echo "<div class='popup'>Ce numero de telephone est deja utilise</div>";
+   } else if (isset($_GET["error"]) && $_GET["error"] == "OK") {
+      echo "<div class='popup'>Inscription reussie</div>";
+   } else if (isset($_GET["error"]) && $_GET["error"] == "OKconn") {
+      echo "<div class='popup'>Connection reussie</div>";
+   }
+}
+
+?>
+
+
 <a href="../index.php" class="return">
    Retour
 </a>
@@ -40,7 +61,7 @@ $codes_postaux = $stmt->fetchAll();
    <div class="overlay">
 
 
-      <div class="container" id="container">
+      <div class="container <?php if ($_GET["error"] == "OK") echo "active" ?> " id="container">
 
 
 
@@ -128,16 +149,16 @@ $codes_postaux = $stmt->fetchAll();
             <p id="switch">Vous n'avez pas de compte ?</p>
 
             <h3>Connexion</h3>
-            <form action="">
+            <form action="../php/login.php" method="POST">
 
 
                <div class="field">
-                  <input type="email" placeholder=" " required>
+                  <input type="email" placeholder=" " required name="mail">
                   <label for="">Email</label>
                </div>
 
                <div class="field">
-                  <input type="password" placeholder=" " required minlength="8">
+                  <input type="password" placeholder=" " required minlength="8" name="password">
                   <label for="">Mot de passe</label>
                </div>
 
