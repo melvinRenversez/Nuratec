@@ -61,7 +61,7 @@ if (isset($_GET["error"])) {
    <div class="overlay">
 
 
-      <div class="container <?php if ($_GET["error"] == "OK") echo "active" ?> " id="container">
+      <div class='container <?php if ($_GET["error"] == "OK") echo "active" ?> ' id="container">
 
 
 

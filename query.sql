@@ -189,5 +189,54 @@ where u.mail = 'melvinrenversez003@gmail.com' and verifyPassword('tretretre' , c
 
 
 
+create table admin_login (
+id INT AUTO_INCREMENT PRIMARY KEY, 
+mail VARCHAR(255) UNIQUE NOT NULL, 
+password VARCHAR(255) NOT NULL, 
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+drop table admin_login;
+truncate admin_login;
+
+select * from admin_login;
 
 
+select verifyPassword('poipoipoi', password)
+from admin_login
+where mail = 'melvinrenversez003@gmail.com';
+
+
+
+select password
+from admin_login
+where mail = 'melvinrenversez003@gmail.com';
+
+
+create table reparation (
+id INT AUTO_INCREMENT PRIMARY KEY,
+user_id INT NOT NULL,
+
+type_id INT NOT NULL,
+marque_id INT NOT NULL,
+modele_id INT NOT NULL,
+prise_en_charge_id INT NOT NULL,
+
+serie VARCHAR(255),
+imei VARCHAR(255),
+description TEXT,
+
+
+FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+FOREIGN KEY (type_id) REFERENCES type_appareil(id) ON DELETE CASCADE,
+FOREIGN KEY (marque_id) REFERENCES marque_appareil(id) ON DELETE CASCADE,
+FOREIGN KEY (modele_id) REFERENCES modele_appareil(id) ON DELETE CASCADE,
+FOREIGN KEY (prise_en_charge_id) REFERENCES prise_en_charge(id) ON DELETE CASCADE
+
+
+
+
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)

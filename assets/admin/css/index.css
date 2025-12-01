@@ -1,0 +1,123 @@
+body {
+   display: flex;
+
+   justify-content: center;
+   align-items: center;
+
+   flex-direction: column;
+   height: 100vh;
+   background: #141313ff;
+}
+form .field {
+   position: relative;
+
+   width: 90%;
+}
+
+form .field input {
+   width: 100%;
+
+   background: transparent;
+
+   border: none;
+
+   border-bottom: 2px solid #adadad;
+
+   outline: none;
+
+   /* background: red; */
+
+   height: 30px;
+
+   padding-left: 10px;
+
+   color: #eee;
+}
+
+form .field label {
+   position: absolute;
+
+   left: 10px;
+   bottom: 5px;
+
+   transition: all 0.3s ease-in-out;
+
+   pointer-events: none;
+}
+
+form .field input:focus~label,
+form .field input:valid~label,
+form .field input:hover~label,
+form .field input:not(:placeholder-shown)~label {
+   left: 0;
+   bottom: 30px;
+   
+   /* font-size: 12px; */
+   transition: all 0.3s ease-in-out;
+
+}
+
+button {
+   width: 90%;
+
+   border: 2px solid #efefef;
+   background: transparent;
+   padding: 10px ;
+   cursor: pointer;
+
+   font-weight: bold;
+
+   transition: all 0.3s ease-in-out;
+
+   margin-bottom: 20px;
+
+   color: #eee;
+}
+
+button:hover {
+   background: #eee;
+   color: #222;
+   border: 2px solid #000;
+}
+
+form {
+
+   display: flex;
+   flex-direction: column;
+
+
+   align-items: center;
+   justify-content: center;
+
+   gap: 40px;
+
+   background: #252424;
+
+   padding: 40px;
+   border-radius: 5px;
+   
+   color: #eee;
+
+
+
+   width: 400px;
+
+}
+
+h1{
+   color: #eee;
+   margin-bottom: 20px;
+}
+
+.popup {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+
+   background: #333333EE;
+
+   padding: 10px  30px;
+
+   color: #eee;
+
+}

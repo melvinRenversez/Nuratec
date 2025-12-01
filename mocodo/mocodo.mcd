@@ -16,3 +16,6 @@ departementer, 11 users, 0N codes_postaux
 communes: id, nom,
 coder, 1N communes, 0N codes_postaux
 codes_postaux: id, code
+
+
+admin_login: id, mail, password, created_at, updated_at

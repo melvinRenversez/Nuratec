@@ -117,7 +117,15 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
       }
 
       .field select,
-      .field input,
+      .field input {
+         padding: 10px;
+         border: none;
+         border-bottom: 1px solid #888;
+         background: transparent;
+         color: #ddd;
+         outline: none;
+      }
+
       .field textarea {
          padding: 10px;
          border: none;
@@ -125,6 +133,8 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
          background: transparent;
          color: #ddd;
          outline: none;
+
+         height: 200px
       }
 
 
@@ -290,10 +300,17 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
             </select>
          </div>
 
+               <div class="field">
+            <label>Numero de serie</label>
+            <input name="serie" type="text" placeholder="Ex : 356789123456789" />
+         </div>
+
          <div class="field">
             <label>Numéro IMEI</label>
             <input name="imei" type="text" placeholder="Ex : 356789123456789" />
          </div>
+
+         
 
          <h2>Prise en charge</h2>
          <div class="checkbox-group">
@@ -308,6 +325,7 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
             ?>
 
          </div>
+
 
          <div class="field">
             <label>Description du problème</label>

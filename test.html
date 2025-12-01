@@ -1,145 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
+
+   <style>
+      body {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100dvh;
+      }
+
+      .grid {
+         background: black;
+         width: 500px;
+         height: 500px;
+         display: grid;
+         grid-template-columns: repeat(5, 1fr);
+         grid-template-rows: repeat(5, 1fr);
+
+
+         padding: 10px;
+         gap: 10px;
+         
+         grid-template-areas:
+            'p p p r r'
+            'p p p o o'
+            'b b b b g'
+            'b b b b g'
+            'y y y y g';
+      }
+
+      .p {
+         background: purple;
+         grid-area: p;
+      }
+
+      .r {
+         background: red;
+         grid-area: r;
+      }
+
+      .b {
+         background: blue;
+         grid-area: b;
+      }
+
+      .o {
+         background: orange;
+         grid-area: o;
+      }
+
+      .g {
+         background: green;
+         grid-area: g;
+      }
+
+      .y {
+         background: yellow;
+         grid-area: y;
+      }
+   </style>
+
 </head>
+
 <body>
 
-   <label for="">Communes</label>
-   <input type="text" name="" list="communesListe">
+   <div class="grid">
+      <div class="p"></div>
+      <div class="r"></div>
+      <div class="b"></div>
+      <div class="o"></div>
+      <div class="g"></div>
+      <div class="y"></div>
+   </div>
 
-
-
-   <datalist id="communesListe">
-
-   </datalist>
-   
 </body>
-
-<script>
-
-const communes = [
-  { id: 1, nom: "Paris" },
-  { id: 2, nom: "Lyon" },
-  { id: 3, nom: "Marseille" },
-  { id: 4, nom: "Lille" },
-  { id: 5, nom: "Toulouse" },
-  { id: 6, nom: "Bordeaux" },
-  { id: 7, nom: "Nice" },
-  { id: 8, nom: "Nantes" },
-  { id: 9, nom: "Strasbourg" },
-  { id: 10, nom: "Montpellier" },
-  { id: 11, nom: "Rennes" },
-  { id: 12, nom: "Reims" },
-  { id: 13, nom: "Le Havre" },
-  { id: 14, nom: "Saint-Étienne" },
-  { id: 15, nom: "Toulon" },
-  { id: 16, nom: "Grenoble" },
-  { id: 17, nom: "Dijon" },
-  { id: 18, nom: "Angers" },
-  { id: 19, nom: "Nîmes" },
-  { id: 20, nom: "Clermont-Ferrand" },
-];
-
-
-   codes_postaux = [
-      {
-         id: 1, commune_id: 1, code_postal: "1000"
-      },
-      {
-         id: 2, commune_id: 1, code_postal: "1001"
-      },
-      {
-         id: 3, commune_id: 1, code_postal: "1002"
-      },
-      {
-         id: 4, commune_id: 1, code_postal: "1003"
-      },
-      {
-         id: 5, commune_id: 1, code_postal: "1004"
-      },
-      {
-         id: 6, commune_id: 2, code_postal: "2000"
-      },
-      {
-         id: 7, commune_id: 2, code_postal: "2001"
-      },
-      {
-         id: 8, commune_id: 2, code_postal: "2002"
-      },
-      {
-         id: 9, commune_id: 3, code_postal: "3000"
-      },
-      {
-         id: 10, commune_id: 3, code_postal: "3001"
-      },
-      {
-         id: 11, commune_id: 3, code_postal: "3002"
-      },
-      {
-         id: 12, commune_id: 4, code_postal: "3003"
-      },
-      {
-         id: 13, commune_id: 5, code_postal: "3004"
-      },
-      {
-         id: 14, commune_id: 6, code_postal: "3005"
-      },
-      {
-         id: 15, commune_id: 7, code_postal: "3006"
-      },
-      {
-         id: 16, commune_id: 8, code_postal: "3007"
-      },
-      {
-         id: 17, commune_id: 9, code_postal: "3008"
-      },
-      {
-         id: 18, commune_id: 10, code_postal: "3009"
-      },
-      {
-         id: 19, commune_id: 11, code_postal: "3010"
-      },
-      {
-         id: 20, commune_id: 12, code_postal: "3011"
-      },
-      {
-         id: 21, commune_id: 13, code_postal: "3012"
-      },
-      {
-         id: 22, commune_id: 14, code_postal: "3013"
-      },
-      {
-         id: 23, commune_id: 15, code_postal: "3014"
-      },
-      {
-         id: 24, commune_id: 16, code_postal: "3015"
-      },
-      {
-         id: 25, commune_id: 17, code_postal: "3016"
-      },
-      {
-         id: 26, commune_id: 18, code_postal: "3017"
-      },
-      {
-         id: 27, commune_id: 19, code_postal: "3018"
-      },
-      {
-         id: 28, commune_id: 20, code_postal: "3019"
-      }
-   ]
-
-   const datalist = document.getElementById('communesListe');
-
-   communes.forEach(commune => {
-      datalist.innerHTML += `<option value="${commune.nom}"></option>`;
-   });
-
-
-
-
-</script>
 
 </html>
