@@ -1,0 +1,184 @@
+* {
+    color: #eee;
+}
+
+.container {
+    display: grid;
+
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+
+    grid-template-areas:
+        "ty ty ty ty ma ma ma ma ma ma re re re re re"
+        "mo mo mo mo mo mo pr pr pr pr re re re re re"
+    ;
+
+    padding: 30px;
+    gap: 30px;
+
+}
+
+.type_appareil {
+    grid-area: ty;
+}
+
+.marque_appareil {
+    grid-area: ma;
+}
+
+.model_appareil {
+    grid-area: mo;
+}
+
+.prise_en_charge {
+    grid-area: pr;
+}
+
+.reparations {
+    grid-area: re;
+}
+
+.type_appareil,
+.marque_appareil,
+.model_appareil,
+.prise_en_charge,
+.reparations {
+    background: #141313;
+    border-radius: 10px;
+    /* padding: 30px; */
+
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+}
+
+header {
+    background: #464646;
+    width: 100%;
+
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    padding: 15px;
+
+    color: #eee;
+
+    
+    font-weight: 600;
+
+    position: relative;
+}
+
+.content {
+
+    width: 100%;
+
+    flex: 1;
+
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    gap: 10px;
+
+    overflow-y: hidden;
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1c1c1c;
+    color: #eee;
+    font-family: sans-serif;
+
+    /* Structure pour scroll tbody */
+    display: grid;
+    grid-template-rows: auto 1fr; /* thead = auto, tbody = prend le reste */
+    height: 100%;
+}
+
+/* THEAD FIXE */
+table thead {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    background: #2a2a2a;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+table thead th {
+    padding: 10px;
+    border-bottom: 1px solid #333;
+
+    text-align: start;
+}
+
+/* TBODY SCROLL */
+table tbody {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    height: 37px;
+    border-bottom: 1px solid #2b2b2b;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+table tbody tr:hover {
+    background: #2d2d2d;
+}
+
+table td {
+    padding: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.redirect {
+    /* background: red; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   height: 100%;
+   aspect-ratio: 1/1;
+
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    border-top-right-radius: 10px;
+
+    cursor: pointer;
+
+}
+
+.redirect svg{
+    width: 30px;
+    height: 30px;
+    stroke-width: 2px;
+
+
+}
+
+.redirect svg path {
+        stroke: #eee;
+        fill: none;
+}
+
+
+.redirect:hover svg {
+    stroke: white;
+}

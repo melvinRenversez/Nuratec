@@ -352,6 +352,9 @@ button:disabled svg path {
 
 
    <li>
+      <a href="./admin/index.php">Admin login</a>
+   </li>
+   <li>
       <a href="./pages/logInOut.php">Connection</a>
    </li>
 

@@ -1,83 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+<meta charset="UTF-8">
+<title>Rubik's Cube 3D - HTML/CSS/JS</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: #222;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    font-family: sans-serif;
+  }
 
-   <style>
-      body {
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100dvh;
-      }
+  .scene {
+    width: 300px;
+    height: 300px;
+    perspective: 1200px;
+  }
 
-      .grid {
-         background: black;
-         width: 500px;
-         height: 500px;
-         display: grid;
-         grid-template-columns: repeat(5, 1fr);
-         grid-template-rows: repeat(5, 1fr);
+  .cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-25deg) rotateY(-35deg);
+    transition: transform 0.6s;
+  }
 
+  .face {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 2px;
+    background: #000;
+  }
 
-         padding: 10px;
-         gap: 10px;
-         
-         grid-template-areas:
-            'p p p r r'
-            'p p p o o'
-            'b b b b g'
-            'b b b b g'
-            'y y y y g';
-      }
+  .sticker {
+    background: #fff;
+    border-radius: 4px;
+  }
 
-      .p {
-         background: purple;
-         grid-area: p;
-      }
+  /* Couleurs des faces */
+  .front  .sticker  { background: #ff0000; }   /* rouge */
+  .back   .sticker  { background: #ff8800; }   /* orange */
+  .right  .sticker  { background: #ffff00; }   /* jaune */
+  .left   .sticker  { background: #ffffff; }   /* blanc */
+  .top    .sticker  { background: #00ff00; }   /* vert */
+  .bottom .sticker  { background: #0000ff; }   /* bleu */
 
-      .r {
-         background: red;
-         grid-area: r;
-      }
+  /* Position des 6 faces */
+  .front  { transform: translateZ(50px); }
+  .back   { transform: rotateY(180deg) translateZ(50px); }
+  .right  { transform: rotateY(90deg) translateZ(50px); }
+  .left   { transform: rotateY(-90deg) translateZ(50px); }
+  .top    { transform: rotateX(90deg) translateZ(50px); }
+  .bottom { transform: rotateX(-90deg) translateZ(50px); }
 
-      .b {
-         background: blue;
-         grid-area: b;
-      }
-
-      .o {
-         background: orange;
-         grid-area: o;
-      }
-
-      .g {
-         background: green;
-         grid-area: g;
-      }
-
-      .y {
-         background: yellow;
-         grid-area: y;
-      }
-   </style>
-
+  /* Boutons */
+  .controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 6px;
+  }
+  button:hover { background: #555; }
+</style>
 </head>
-
 <body>
 
-   <div class="grid">
-      <div class="p"></div>
-      <div class="r"></div>
-      <div class="b"></div>
-      <div class="o"></div>
-      <div class="g"></div>
-      <div class="y"></div>
-   </div>
+<div class="scene">
+  <div class="cube" id="cube">
+    <!-- Face avant (rouge) -->
+    <div class="face front">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+    <!-- Face arrière (orange) -->
+    <div class="face back">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+    <!-- Face droite (jaune) -->
+    <div class="face right">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+    <!-- Face gauche (blanc) -->
+    <div class="face left">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+    <!-- Face haut (vert) -->
+    <div class="face top">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+    <!-- Face bas (bleu) -->
+    <div class="face bottom">
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+      <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="shuffle">Mélanger</button>
+  <button id="solve">Résoudre</button>
+</div>
+
+<script>
+// Variables globales
+const cube = document.getElementById('cube');
+let isDragging = false;
+let previousX, previousY;
+
+// Rotation avec la souris
+document.addEventListener('mousedown', e => {
+  isDragging = true;
+  previousX = e.clientX;
+  previousY = e.clientY;
+});
+document.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  const deltaX = e.clientX - previousX;
+  const deltaY = e.clientY - previousY;
+  previousX = e.clientX;
+  previousY = e.clientY;
+
+  const current = cube.style.transform || 'rotateX(0deg) rotateY(0deg)';
+  const rotateX = current.match(/rotateX\((-?\d+)deg\)/) ? parseInt(current.match(/rotateX\((-?\d+)deg\)/)[1]) : -25;
+  const rotateY = current.match(/rotateY\((-?\d+)deg\)/) ? parseInt(current.match(/rotateY\((-?\d+)deg\)/)[1]) : -35;
+
+  cube.style.transform = `rotateX(${rotateX - deltaY}deg) rotateY(${rotateY + deltaX}deg)`;
+});
+document.addEventListener('mouseup', () => isDragging = false);
+document.addEventListener('mouseleave', () => isDragging = false);
+
+// Fonction pour animer une rotation de face (90°)
+function rotateFace(faceClass, clockwise = true) {
+  const faces = {
+    'U': '.top',    // Up (haut)
+    'D': '.bottom', // Down (bas)
+    'L': '.left',
+    'R': '.right',
+    'F': '.front',
+    'B': '.back'
+  };
+  const axis = {
+    'U': 'rotateX(90deg)',
+    'D': 'rotateX(-90deg)',
+    'L': 'rotateY(90deg)',
+    'R': 'rotateY(-90deg)',
+    'F': 'rotateZ(90deg)',
+    'B': 'rotateZ(-90deg)'
+  };
+
+  const dir = clockwise ? '' : '-';
+  const transform = axis[faceClass];
+
+  cube.style.transition = 'transform 0.5s';
+  cube.style.transform += ` ${dir}${transform}`;
+}
+
+// Mélanger le cube (20 mouvements aléatoires)
+document.getElementById('shuffle').addEventListener('click', () => {
+  let moves = 20;
+  const faces = ['U','D','L','R','F','B'];
+  const interval = setInterval(() => {
+    if (moves-- <= 0) {
+      clearInterval(interval);
+      cube.style.transition = 'transform 0.6s';
+      return;
+    }
+    const face = faces[Math.floor(Math.random()*6)];
+    const clockwise = Math.random() > 0.5;
+    rotateFace(face, clockwise);
+  }, 400);
+});
+
+// Remettre à la position de départ (résolution visuelle)
+document.getElementById('solve').addEventListener('click', () => {
+  cube.style.transition = 'transform 1s';
+  cube.style.transform = 'rotateX(-25deg) rotateY(-35deg)';
+});
+</script>
 
 </body>
-
 </html>
