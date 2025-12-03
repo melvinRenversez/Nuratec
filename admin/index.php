@@ -1,7 +1,7 @@
 <?php 
 
 include("../php/database.php");
-include("../php/errorPopup.php");
+include("../php/popup.php");
 
 $query = 'select count(id) from admin_login';
 $stmt = $db->prepare($query);
@@ -18,6 +18,7 @@ $result = $stmt->fetch();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="stylesheet" href="../assets/css/popup.css">
     <link rel="stylesheet" href="../assets/admin/css/index.css">
 
 </head>

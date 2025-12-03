@@ -11,7 +11,7 @@ $modeleListe = $db->query( 'select mo.id, mo.libelle as model, ma.libelle as mar
 
 $priseEnChargeListe = $db->query( 'select id, libelle from prise_en_charge;' )->fetchAll( PDO::FETCH_ASSOC );
 
-$reparations = $db->query('select re.id, mo.libelle as modele, pr.libelle as object from reparation re join modele_appareil mo on mo.id = re.modele_id join prise_en_charge pr on pr.id = re.prise_en_charge_id;')->fetchAll( PDO::FETCH_ASSOC );
+$reparations = $db->query('select re.id, mo.libelle as modele, re.prise_en_charge as object from reparations re join modele_appareil mo on mo.id = re.modele_id ;')->fetchAll( PDO::FETCH_ASSOC );
 
 // var_dump( $typeListe );
 // var_dump( $marqueListe );
@@ -44,7 +44,7 @@ $reparations = $db->query('select re.id, mo.libelle as modele, pr.libelle as obj
 
     <div class="gap"></div>
 
-    <li><a href="">Deconnection</a></li>
+    <li><a href="../php/logout.php">Deconnection</a></li>
 </ul>
 
 </nav>

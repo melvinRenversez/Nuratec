@@ -41,6 +41,8 @@ table thead th {
     border-bottom: 1px solid #333;
 
     text-align: start;
+
+    font-size: 16px;
 }
 
 /* TBODY SCROLL */
@@ -69,6 +71,8 @@ table td {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    
+    font-size: 13px;
 }
 
 .redirect {

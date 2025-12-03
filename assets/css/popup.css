@@ -1,0 +1,30 @@
+.popup {
+   position: absolute;
+   top: 20px;
+   left: 50%;
+
+   transform: translateX(-50%);
+
+   background: #333333EE;
+
+   padding: 10px  30px;
+
+   color: #eee;
+
+   animation: fade-out 4s ;
+
+   opacity: 0;
+
+}
+
+@keyframes fade-out {
+   0% {
+      opacity: 1;
+   }
+   80% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
+}

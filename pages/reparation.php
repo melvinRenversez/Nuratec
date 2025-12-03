@@ -271,7 +271,7 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
    </section>
 
    <section class="reparation">
-      <form method="POST" action="./php/sendReparation.php" style="display:flex;flex-direction:column;gap:20px;">
+      <form method="POST" action="../php/sendReparation.php" style="display:flex;flex-direction:column;gap:20px;">
          <h2>Réparation d'appareil</h2>
 
          <div class="field">

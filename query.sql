@@ -62,6 +62,12 @@ INSERT INTO modele_appareil (libelle, marque_id) VALUES
 ('iPad Air', 5);
 
 
+INSERT INTO modele_appareil (libelle, marque_id) VALUES
+('iPhone 13', 1),
+('iPhone 12', 1),
+('iPhone 11', 1),
+('iPhone 10', 1);
+
 
 select * from type_appareil;
 select * from marque_appareil;
@@ -214,29 +220,48 @@ from admin_login
 where mail = 'melvinrenversez003@gmail.com';
 
 
-create table reparation (
+drop table reparations;
+create table reparations (
 id INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT NOT NULL,
 
 type_id INT NOT NULL,
 marque_id INT NOT NULL,
 modele_id INT NOT NULL,
-prise_en_charge_id INT NOT NULL,
+prise_en_charge text NOT NULL,
 
 serie VARCHAR(255),
 imei VARCHAR(255),
 description TEXT,
 
-
 FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
 FOREIGN KEY (type_id) REFERENCES type_appareil(id) ON DELETE CASCADE,
 FOREIGN KEY (marque_id) REFERENCES marque_appareil(id) ON DELETE CASCADE,
 FOREIGN KEY (modele_id) REFERENCES modele_appareil(id) ON DELETE CASCADE,
-FOREIGN KEY (prise_en_charge_id) REFERENCES prise_en_charge(id) ON DELETE CASCADE
-
-
-
 
 created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
 updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)
+);
+
+
+
+select * from marque_appareil; 
+select * from modele_appareil; 
+
+select * from type_appareil; 
+
+select ma.id, ma.libelle as marque, ty.libelle as type
+from type_appareil ty 
+join marque_appareil ma on ma.type_id = ty.id
+ORDER BY ma.id DESC;
+
+
+select mo.id, mo.libelle as model, ma.libelle as marque, ty.libelle as type 
+from type_appareil ty 
+join marque_appareil ma on ma.type_id = ty.id
+join modele_appareil mo on mo.marque_id = ma.id;
+
+
+select id, libelle from prise_en_charge;
+
+select * from reparations;

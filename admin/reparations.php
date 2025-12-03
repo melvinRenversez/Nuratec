@@ -6,7 +6,7 @@ include('../php/database.php');
 $page = $_GET['page'] ?? 1;
 $range = 50;
 $offset = $range * ($page-1); 
-$limit = $db->query("select floor(count(*) / $range)+1 as total_pages from reparation;")->fetch(PDO::FETCH_ASSOC)['total_pages'];
+$limit = $db->query("select floor(count(*) / $range)+1 as total_pages from reparations;")->fetch(PDO::FETCH_ASSOC)['total_pages'];
 
 $minerPage = $page - 1;
 if ($minerPage < 1) {
@@ -18,13 +18,12 @@ if ($plusPage > $limit) {
 }
 
 
-$reparations = $db->query("select re.id, ty.libelle as type, ma.libelle as marque, mo.libelle as modele, pr.libelle as object, re.description, concat(concat(us.nom, ' '), us.prenom) as user, serie, imei
-from reparation re
+$reparations = $db->query("select re.id, ty.libelle as type, ma.libelle as marque, mo.libelle as modele, re.prise_en_charge as object, re.description, concat(concat(us.nom, ' '), us.prenom) as user, serie, imei
+from reparations re
 join users us on us.id = re.user_id
 join type_appareil ty on ty.id = re.type_id
 join marque_appareil ma on ma.id = re.marque_id
 join modele_appareil mo on mo.id = re.modele_id
-join prise_en_charge pr on pr.id = re.prise_en_charge_id
 ORDER BY id DESC
 LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -56,7 +55,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="gap"></div>
 
-    <li><a href="">Deconnection</a></li>
+    <li><a href="../php/logout.php">Deconnection</a></li>
 </ul>
 
 </nav>

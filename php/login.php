@@ -30,7 +30,7 @@ $result = $stmt->fetch();
 
 if ($result) {
    session_start();
-   $_SESSION["id"] = $result["id"];
+   $_SESSION["user_id"] = $result["id"];
    header("Location: ../index.php");
    exit();
 } else {

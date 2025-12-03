@@ -29,7 +29,7 @@ include("../php/admin/verifyUser.php");
 
     <div class="gap"></div>
 
-    <li><a href="">Deconnection</a></li>
+    <li><a href="../php/logout.php">Deconnection</a></li>
 </ul>
 
 </nav>
