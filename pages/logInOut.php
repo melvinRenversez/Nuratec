@@ -3,7 +3,7 @@
 
 
 include("../php/database.php");
-include("../php/errorPopup.php");
+include("../php/popup.php");
 
 $query = "select id, nom from communes";
 $stmt = $db->prepare($query);
@@ -27,6 +27,7 @@ $codes_postaux = $stmt->fetchAll();
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 
+   <link rel="stylesheet" href="../assets/css/popup.css">
    <link rel="stylesheet" href="../assets/css/logInOut.css">
 
 </head>

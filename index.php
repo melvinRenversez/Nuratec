@@ -61,6 +61,9 @@ $modeleListe = $stmt->fetchAll();
          if (isset($_SESSION["user_id"])) {
             ?>
             <li>
+               <a href="./pages/myReparation.php">Mes reparation</a>
+            </li>
+            <li>
                <a href="./pages/reparation.php">Reparation</a>
             </li>
             <li>

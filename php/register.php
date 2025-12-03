@@ -18,12 +18,12 @@ echo $nom . " " . $prenom . " " . $mail . " " . $telephone . " " . $adresse . " 
 
 
 if (!isset($nom) || !isset($prenom) || !isset($mail) || !isset($telephone) || !isset($adresse) || !isset($ville) || !isset($code_postal) || !isset($mdp) || !isset($mdpConf)) {
-    header("Location: ../pages/logInOut.php?error=emptyFields   ");
+    header("Location: ../pages/logInOut.php?popup=emptyFields   ");
     exit();
 }
 
 if ($mdp !== $mdpConf) {
-    header("Location: ../pages/logInOut.php?error=passwordsDontMatch");
+    header("Location: ../pages/logInOut.php?popup=passwordsDontMatch");
     exit();
 }
 
@@ -55,7 +55,7 @@ $stmt->execute(array(
     ':mdp' => $mdp
 ));
 
-header("Location: ../pages/logInOut.php?error=OK");
+header("Location: ../pages/logInOut.php?popup=OK");
 exit();
 
 ?>

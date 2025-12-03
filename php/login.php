@@ -31,10 +31,10 @@ $result = $stmt->fetch();
 if ($result) {
    session_start();
    $_SESSION["user_id"] = $result["id"];
-   header("Location: ../index.php");
+   header("Location: ../index.php?popup=successConn");
    exit();
 } else {
-   header("Location: ../pages/logInOut.php?error=wrongCredentials");
+   header("Location: ../pages/logInOut.php?popup=wrongCredentials");
    exit();
 }
 

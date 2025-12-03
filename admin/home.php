@@ -1,4 +1,4 @@
-<?php
+    <?php
 session_start();
 include( '../php/admin/verifyUser.php' );
 include( '../php/database.php' );

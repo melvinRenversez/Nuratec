@@ -106,7 +106,7 @@ nav ul li a {
 }
 
 .container {
-    /* background: red; */
+    /* background: gold; */
 
     height: 100%;
     width: 100%;
@@ -135,4 +135,84 @@ nav ul li a {
 * {
     scrollbar-width: thin;
     scrollbar-color: #444 #1c1c1c;
+}
+
+.conf {
+    background: #efefef11;
+    /* background: red; */
+
+    backdrop-filter: blur(12px);
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    padding-top: 60px;
+
+    display: none;
+    opacity: 0;
+
+    transition: opacity 0.3s ease-in-out;
+
+}
+
+.conf.actif {
+    display: flex;
+    opacity: 1;
+}
+
+.conf span {
+    font-size: 22px;
+
+    color: #eee;
+}
+
+.conf .buttons {
+    display: flex;
+
+    gap: 10px;
+
+}
+
+tr td {
+    position: relative;
+}
+
+tr td .trash-btn {
+    /* background: red; */
+
+    position: absolute;
+
+    top: 50%;
+    right: 5px;
+
+    transform: translateY(-50%);
+
+    height: 70%;
+    aspect-ratio: 1/1;
+}
+
+tr td .trash-btn svg {
+    width: 100%;
+    height: 100%;
+}
+
+tr td .trash-btn svg path {
+    stroke: #eee;
+    transition: all 0.3s ease-in-out;
+}
+
+tr td .trash-btn svg:hover path {
+    stroke: rgb(161, 12, 12);
 }

@@ -1,0 +1,261 @@
+.container {
+   display: grid;
+
+   grid-template-columns: repeat(8, 1fr);
+   grid-template-rows: repeat(6, 1fr);
+
+   grid-template-areas:
+      '. . . . . . . .'
+      '. t t t . . . .'
+      '. t t t . a a .'
+      '. t t t . a a .'
+      '. t t t . . . .'
+      '. . . . . . . .'
+   ;
+
+   gap: 10px;
+
+}
+
+.table {
+   grid-area: t;
+   /* background: red; */
+}
+
+.add {
+   grid-area: a;
+   background: #1c1c1c;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   border-radius: 10px;
+}
+
+.add form {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   flex-direction: column;
+
+   gap: 20px;
+
+   width: 90%;
+   height: 90%;
+
+   /* background: gold; */
+}
+
+form .field {
+   position: relative;
+
+   width: 90%;
+
+   padding-top: 30px;
+}
+
+form .field input {
+   width: 100%;
+
+   background: transparent;
+
+   border: none;
+
+   border-bottom: 2px solid #adadad;
+
+   outline: none;
+
+   /* background: red; */
+
+   height: 30px;
+
+   padding-left: 10px;
+
+   color: #eee;
+}
+
+form .field label {
+   position: absolute;
+
+   left: 10px;
+   bottom: 5px;
+
+   transition: all 0.3s ease-in-out;
+
+   pointer-events: none;
+
+   color: #eee;
+}
+
+form .field input:focus~label,
+form .field input:valid~label,
+form .field input:hover~label,
+form .field input:not(:placeholder-shown)~label {
+   left: 0;
+   bottom: 30px !important;
+
+   /* font-size: 12px; */
+   transition: all 0.3s ease-in-out;
+
+}
+
+form .s label {
+   left: 0;
+   bottom: 30px !important;
+
+   /* font-size: 12px; */
+   transition: all 0.3s ease-in-out;
+}
+
+button {
+   width: 90%;
+
+   border: 2px solid #efefef;
+   background: transparent;
+   padding: 10px;
+   cursor: pointer;
+
+   font-weight: bold;
+
+   transition: all 0.3s ease-in-out;
+
+   margin-bottom: 20px;
+
+   color: #eee;
+}
+
+button:hover {
+   background: #eee;
+   color: #222;
+   border: 2px solid #000;
+}
+
+form h3 {
+   color: #eee;
+   font-size: 22px;
+   font-weight: 800;
+}
+
+
+table {
+   width: 100%;
+   border-collapse: collapse;
+   background: #1c1c1c;
+   color: #eee;
+   font-family: sans-serif;
+
+
+   display: grid;
+   grid-template-rows: auto 1fr;
+   height: 100%;
+
+   border-radius: 10px;
+}
+
+
+table thead {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
+   background: #2a2a2a;
+   position: sticky;
+   top: 0;
+   z-index: 10;
+
+
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+
+}
+
+table thead th {
+   padding: 10px;
+   border-bottom: 1px solid #333;
+
+   text-align: start;
+
+   /* font-size: 16px; */
+}
+
+table tbody {
+   display: block;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
+
+table tbody tr {
+   display: table;
+   width: 100%;
+   table-layout: fixed;
+   height: 37px;
+   border-bottom: 1px solid #2b2b2b;
+   transition: background 0.2s;
+   cursor: pointer;
+}
+
+table tbody tr:hover {
+   background: #2d2d2d;
+}
+
+table td {
+   padding: 8px;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+
+   /* font-size: 13px; */
+}
+
+.field select {
+   padding: 8px;
+
+   /* appearance: none; */
+
+   background: transparent;
+
+   color: #ddd;
+
+
+   border: none;
+   border-bottom: 1px solid #ccc;
+
+   border-radius: 0px;
+
+   outline: none;
+
+   cursor: pointer;
+
+   width: 100%;
+
+}
+
+select,
+select::picker(select) {
+   appearance: base-select;
+}
+
+select::picker(select) {
+   background: transparent;
+   backdrop-filter: blur(12px);
+
+   border: none;
+
+}
+
+.field select option {
+   background: transparent;
+   backdrop-filter: blur(10px);
+   color: #ddd;
+   padding: 10px;
+}
+
+.field select:disabled {
+   opacity: 0.5;
+   cursor: not-allowed;
+}
+
+.field select option:hover {
+   background: #333;
+}

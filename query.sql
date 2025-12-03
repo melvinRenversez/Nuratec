@@ -264,4 +264,9 @@ join modele_appareil mo on mo.marque_id = ma.id;
 
 select id, libelle from prise_en_charge;
 
+select * from admin_login;
 select * from reparations;
+select * from type_appareil;
+select * from marque_appareil;
+select * from modele_appareil;
+select * from prise_en_charge;
