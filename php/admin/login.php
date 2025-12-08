@@ -21,6 +21,7 @@ $stmt->execute(array(
 $result = $stmt->fetch();
 
 
+$_SESSION["popup"] = true;
 if ($result['id']) {
     session_start();
     $_SESSION['admin_id'] = $result['id'];

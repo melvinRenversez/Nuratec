@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #141313ff;
+
+    display: flex;
+    flex-direction: column;
+
+    height: 100dvh;
+}
+
+section.nav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+section.nav nav {
+    /* background: #3A3A3A; */
+
+    width: min-content;
+    padding: 30px;
+}
+
+section.nav nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px 20px;
+
+    /* width: auto; */
+
+    align-items: center;
+    justify-content: center;
+}
+
+section.nav nav ul li a {
+    text-decoration: none;
+    color: #eee;
+    font-weight: bold;
+    font-size: 18px;
+
+    position: relative;
+
+    padding: 10px;
+
+    /* width: auto; */
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+section.nav nav ul li a::before {
+    content: ' ';
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    display: block;
+
+    width: 0%;
+    height: 2px;
+
+    background: #eee;
+    transition: width 0.3s;
+}
+
+
+section.nav nav ul li a:hover::before {
+    width: 100%;
+}
+
+section.nav nav ul li a.actif::before {
+    width: 100%;
+}
+
+
+form {
+
+    display: flex;
+    flex-direction: column;
+
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+
+    width: 25%;
+
+    color: #eee;
+
+}
+
+form .field {
+    position: relative;
+
+    width: 90%;
+}
+
+form .field input {
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    border-bottom: 2px solid #adadad;
+
+    outline: none;
+
+    /* background: red; */
+
+    height: 30px;
+
+    padding-left: 10px;
+
+    color: #eee;
+}
+
+form .field label {
+    position: absolute;
+
+    left: 10px;
+    bottom: 5px;
+
+    transition: all 0.3s ease-in-out;
+
+    pointer-events: none;
+}
+
+form .field input:focus~label,
+form .field input:valid~label,
+form .field input:hover~label,
+form .field input:not(:placeholder-shown)~label {
+    left: 0;
+    bottom: 30px;
+
+    /* font-size: 12px; */
+    transition: all 0.3s ease-in-out;
+
+}
+
+button {
+    width: 90%;
+
+    border: 2px solid #efefef;
+    background: transparent;
+    padding: 10px;
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: all 0.3s ease-in-out;
+
+    margin-bottom: 20px;
+
+    color: #eee;
+}
+
+button:hover {
+    background: #eee;
+    color: #222;
+    border: 2px solid #000;
+}
+
+
+form .error,
+form .error input,
+form .error label {
+    color: #cf1f1f !important;
+    border-color: #cf1f1f !important;
+
+}
+
+.good,
+.good input,
+.good label {
+    color: #31811d !important;
+    border-color: #31811d !important;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 1;
+}

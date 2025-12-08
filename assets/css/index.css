@@ -1,5 +1,4 @@
-
-   * {
+* {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
@@ -191,8 +190,8 @@ section.reparation button:hover .slider {
 
 section.titre {
    text-align: center;
-   margin-top: 50px;
-   padding-bottom: 100px;
+   margin-top: 20px;
+   padding-bottom: 70px;
    color: #eee;
 
    font-size: 80px;
@@ -276,4 +275,82 @@ button:disabled svg path {
    border-color: #9e1212 !important;
    color: #9e1212 !important;
    stroke: #9e1212 !important;
+}
+
+.reprise {
+
+   width: 100%;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.reprise .reprise-content {
+   border: 1px solid #ccc;
+
+   background: #242121ff;
+
+   width: 50%;
+
+   padding: 40px 30px;
+
+   border-radius: 7px;
+
+   display: flex;
+}
+
+.reprise .reprise-content span.rep-text {
+   color: #eee;
+   font-size: 1.1rem;
+
+   line-height: 1.5rem;
+
+   /* background: red; */
+
+   flex: 5;
+
+   padding-right: 50px;
+}
+
+.reprise .reprise-content span.rep-text h5{
+   color: #eee;
+   font-size: 1.6rem;
+
+   padding-bottom: 20px;
+}
+
+.reprise .reprise-content .rep-button {
+   /* background: blue; */
+   flex: 1;
+   
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   
+   gap: 20px;
+
+   text-decoration: none;
+}
+
+.reprise .reprise-content .rep-button span {
+   color: #eee;
+   font-size: 1.4rem;
+
+}
+
+.reprise .reprise-content .rep-button a svg {
+   width: 32px;
+   height: 32px;
+}
+
+
+.reprise .reprise-content .rep-button a svg path{
+   stroke: #eee;
+   transition: all 0.3s ease-in-out;
+}
+
+.reprise .reprise-content .rep-button a:hover svg path{
+   stroke: rgb(48, 203, 34);
 }

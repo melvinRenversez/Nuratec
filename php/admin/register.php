@@ -18,5 +18,6 @@ $stmt->execute(array(
     ':password' => $passwordInput
 ));
 
+$_SESSION["popup"] = true;
 header("Location: ../../admin/index.php?error=OK");
 exit();

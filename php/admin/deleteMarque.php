@@ -14,6 +14,7 @@ $stmt = $db->prepare($query);
 $stmt->bindValue(':id', $id);
 $stmt->execute();
 
+$_SESSION["popup"] = true;
 if ($stmt->rowCount() > 0) {
    header("Location: ../../admin/marque_appareil.php?popup=successDelete");
 }else {

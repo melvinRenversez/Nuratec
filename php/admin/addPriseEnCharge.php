@@ -12,6 +12,7 @@ $query = "insert into prise_en_charge(libelle) values(?)";
 $stmt = $db->prepare($query);
 $stmt->execute([$name]);
 
+$_SESSION["popup"] = true;
 if ($stmt->rowCount() > 0) {
    header("Location: ../../admin/prise_en_charge.php?popup=successAdd");
 }else {

@@ -15,6 +15,7 @@ $stmt->execute([$name, $type]);
 
 
 
+$_SESSION["popup"] = true;
 if ($stmt->rowCount() > 0) {
    header("Location: ../../admin/marque_appareil.php?popup=successAdd");
 }else {

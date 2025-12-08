@@ -14,6 +14,7 @@ $stmt = $db->prepare($query);
 $stmt->execute([$name, $marque]);
 
 
+$_SESSION["popup"] = true;
 if ($stmt->rowCount() > 0) {
    header("Location: ../../admin/modele_appareil.php?popup=successAdd");
 }else {

@@ -1,6 +1,11 @@
 <?php
 
-if (isset($_GET["popup"])) {
+if (!isset($_SESSION["popup"])) {
+   $_SESSION["popup"] = false;
+}
+
+if (isset($_GET["popup"]) && $_SESSION["popup"] == true) {
+   $_SESSION["popup"] = false;
    if (isset($_GET["popup"]) && $_GET["popup"] == "emptyFields") {
       echo "<div class='popup'>Veuillez remplir tous les champs</div>";
    } else if (isset($_GET["popup"]) && $_GET["popup"] == "passwordsDontMatch") {

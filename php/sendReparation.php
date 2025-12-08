@@ -37,7 +37,11 @@ $stmt->execute(array(
     ':description' => $description
 ));
 
+
+$_SESSION["popup"] = true;
+
 if ($stmt->rowCount() > 0) {
+    
     header("Location: ../index.php?popup=successSendReparation");
 } else {
     header("Location: ../index.php?error=errorSendReparation");

@@ -12,6 +12,7 @@ $query = "insert into type_appareil(libelle) values(?)";
 $stmt = $db->prepare($query);
 $stmt->execute([$name]);
 
+$_SESSION["popup"] = true;
 if ($stmt->rowCount() > 0) {
    header("Location: ../../admin/type_appareil.php?popup=successAdd");
 }else {

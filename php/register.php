@@ -55,6 +55,8 @@ $stmt->execute(array(
     ':mdp' => $mdp
 ));
 
+
+$_SESSION["popup"] = true;
 header("Location: ../pages/logInOut.php?popup=OK");
 exit();
 
