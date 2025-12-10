@@ -54,7 +54,7 @@ $reparations = $db->query('select re.id, mo.libelle as modele, re.prise_en_charg
 
     <div class="type_appareil">
         <header> 
-            Type_appareil
+            Type appareil
 
             <a href="./type_appareil.php" class="redirect">
                 <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 48 48"><path d="M12.905,20.0328H9.0934L4.5,27.9889H8.3116Z"/><path d="M28.1821,9.0236V19.8082H24.3705l-4.5934,7.9561h8.405V38.9764L43.5,23.8437Z"/><path d="M20.4316,20.0328H16.62l-4.5934,7.9561h3.8116Z"/></svg>
@@ -83,7 +83,7 @@ $reparations = $db->query('select re.id, mo.libelle as modele, re.prise_en_charg
 
     <div class="marque_appareil">
         <header> 
-            Marque_appareil
+            Marque appareil
 
             <a href="./marque_appareil.php" class="redirect">
                 <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 48 48"><defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M12.905,20.0328H9.0934L4.5,27.9889H8.3116Z"/><path class="a" d="M28.1821,9.0236V19.8082H24.3705l-4.5934,7.9561h8.405V38.9764L43.5,23.8437Z"/><path class="a" d="M20.4316,20.0328H16.62l-4.5934,7.9561h3.8116Z"/></svg>
@@ -114,7 +114,7 @@ $reparations = $db->query('select re.id, mo.libelle as modele, re.prise_en_charg
 
     <div class="model_appareil">
         <header> 
-            Modele_appareil
+            Modele appareil
 
             <a href="./modele_appareil.php" class="redirect">
                 <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 48 48"><defs><style>.a{fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;}</style></defs><path class="a" d="M12.905,20.0328H9.0934L4.5,27.9889H8.3116Z"/><path class="a" d="M28.1821,9.0236V19.8082H24.3705l-4.5934,7.9561h8.405V38.9764L43.5,23.8437Z"/><path class="a" d="M20.4316,20.0328H16.62l-4.5934,7.9561h3.8116Z"/></svg>

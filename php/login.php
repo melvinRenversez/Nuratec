@@ -5,12 +5,14 @@ include( './database.php' );
 $mdp = $_POST[ 'password' ];
 $mail = $_POST[ 'mail' ];
 
+echo $mail . ' ' . $mdp;
+
 if ( !isset( $mail ) || !isset( $mdp ) ) {
-    header( 'Location: ../pages/logInOut.php?error=emptyFields   ' );
+    header( 'Location: ../pages/logInOut.php?error=emptyFields' );
     exit();
 }
 
-$query = 'select u.id 
+$query = 'select u.id , u.activated
 from users u 
 join credentials c on c.user_id = u.id
 where u.mail = :mail and verifyPassword(:password , c.password_hash);
@@ -25,12 +27,18 @@ $stmt->execute( array(
 $result = $stmt->fetch();
 
 
+
 $_SESSION["popup"] = true;
 if ( $result ) {
-    session_start();
-    $_SESSION[ 'user_id' ] = $result[ 'id' ];
-    header( 'Location: ../index.php?popup=successConn' );
-    exit();
+    if ( !$result[ 'activated' ] ) {
+        header( 'Location: ../pages/logInOut.php?popup=notActivated' );
+        exit();
+    }else {
+        session_start();
+        $_SESSION[ 'user_id' ] = $result[ 'id' ];
+        header( 'Location: ../index.php?popup=successConn' );
+        exit();
+    }
 } else {
     header( 'Location: ../pages/logInOut.php?popup=wrongCredentials' );
     exit();

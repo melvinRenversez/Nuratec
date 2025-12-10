@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../php/database.php");
+include("../php/verifyUser.php");
 
 // Récupérer les listes
 $typeListe = $db->query("SELECT id, libelle FROM type_appareil ORDER BY libelle")->fetchAll(PDO::FETCH_ASSOC);
@@ -39,7 +40,7 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
          if (isset($_SESSION["user_id"])) {
             ?>
             <li>
-               <a href="./pages/myReparation.php">Mes reparation</a>
+               <a href="../pages/myReparation.php">Mes reparation</a>
             </li>
             <li>
                <a class="actif">Reparation</a>
@@ -48,7 +49,7 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
                <a href="">Mon compte</a>
             </li>
             <li>
-               <a href="./php/logout.php">Deconnection</a>
+               <a href="../php/logout.php">Deconnection</a>
             </li>
             <?php
          } else {
@@ -79,7 +80,7 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
 
          <div class="field">
             <label>Type d'appareil</label>
-            <select id="type-select" name="type">
+            <select id="type-select" name="type" required>
                <option value=""> -- Type -- </option>
                <?php foreach ($typeListe as $type): ?>
                   <option value="<?= $type['id'] ?>" <?= ($selectedType == $type['id']) ? 'selected' : '' ?>>
@@ -91,26 +92,26 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
 
          <div class="field">
             <label>Marque</label>
-            <select id="marque-select" name="marque" disabled>
+            <select id="marque-select" name="marque" disabled required>
                <option value=""> -- Marque -- </option>
             </select>
          </div>
 
          <div class="field">
             <label>Modèle</label>
-            <select id="modele-select" name="modele" disabled>
+            <select id="modele-select" name="modele" disabled required>
                <option value=""> -- Modèle -- </option>
             </select>
          </div>
 
-               <div class="field">
-            <label>Numero de serie</label>
-            <input name="serie" type="text" placeholder="Ex : 356789123456789" />
+         <div class="field">
+            <label>Numero de série</label>
+            <input name="serie" type="number" pattern="[0-9]+" inputmode="numeric" placeholder="Ex : 356789123456789" required/>
          </div>
 
          <div class="field">
             <label>Numéro IMEI</label>
-            <input name="imei" type="text" placeholder="Ex : 356789123456789" />
+            <input name="imei" type="number" pattern="[0-9]+" inputmode="numeric" placeholder="Ex : 356789123456789" required/>
          </div>
 
          
@@ -132,10 +133,10 @@ $selectedModel = isset($_GET['model']) ? intval($_GET['model']) : null;
 
          <div class="field">
             <label>Description du problème</label>
-            <textarea name="description" rows="5" placeholder="Décrivez le problème rencontré..."></textarea>
+            <textarea name="description" rows="5" placeholder="Décrivez le problème rencontré..." required></textarea>
          </div>
 
-         <button><span>Envoyer la demande</span></button>
+         <button type="submit"><span>Envoyer la demande</span></button>
       </form>
    </section>
 

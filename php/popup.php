@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION["popup"])) {
-   $_SESSION["popup"] = false;
+   $_SESSION["popup"] = true;
 }
 
 if (isset($_GET["popup"]) && $_SESSION["popup"] == true) {
@@ -34,6 +34,16 @@ if (isset($_GET["popup"]) && $_SESSION["popup"] == true) {
       echo "<div class='popup'>Suppression avec success</div>";
    }else if(isset($_GET["popup"]) && $_GET["popup"] == "errorDelete"){
       echo "<div class='popup'>Une erreur est survenue lors de la suppression</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "registerSuccess"){
+      echo "<div class='popup'>Inscription reussie, Vous allez recevoir un mail pour activer votre compte</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "mailExists"){
+      echo "<div class='popup'>Cette adresse mail est deja utilise</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "activationSuccess"){
+      echo "<div class='popup'>Votre compte a bien ete activé</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "notActivated"){
+      echo "<div class='popup'>Veuillez activer votre compte pour vous connecter</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "connRequired"){
+      echo "<div class='popup'>Vous devez etre connecter pour fair cette action</div>";
    }
 }
 

@@ -88,7 +88,7 @@ $Liste = $stmt->fetchAll();
                 <h3>Ajouter une prise en charge</h3>
 
                 <div class="field">
-                    <input type="text" placeholder=" " name="name">
+                    <input type="text" placeholder=" " name="name" required>
                     <label for="">Nom de la prise en charge</label>
                 </div>
                 <button type="submit">Ajouter</button>

@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include("./php/database.php");
@@ -119,9 +118,9 @@ $modeleListe = $stmt->fetchAll();
          </div>
          
          <div class="field">
-            <label for="">Model</label>
+            <label for="">Modele</label>
             <select name="model" id="model-select" disabled>
-               <option value=""> -- Model --</option>
+               <option value=""> -- Modele --</option>
             </select>
          </div>
 

@@ -114,7 +114,7 @@ group by commune_id
 having count(commune_id) > 15
 ;
 
-select * from communes where nom like '%Aubry%';
+select * from communes where nom like '%Denain%';
 
 select * from codes_postaux where commune_id = 21773;
 
@@ -271,9 +271,20 @@ select * from marque_appareil;
 select * from modele_appareil;
 select * from prise_en_charge;
 select * from users;
+select * from credentials;
 
 select u.nom, u.prenom, u.mail, u.telephone, u.adresse, c.nom as ville, cp.code_postal
 from users u
 join communes c on c.id = ville_id
-join codes_postaux cp on cp.id = u.code_postal_id 
-where u.id = 11;
+join codes_postaux cp on cp.id = u.code_postal_id;
+
+select * from users;
+alter table users add column activated boolean not null default false after code_postal_id;
+alter table users add column activation_code varchar(255) not null after activated;
+
+select u.id , u.activated
+from users u 
+join credentials c on c.user_id = u.id
+where u.mail = 'melvinrenversezz003@gmail.verifyPasswordcom' and verifyPassword('mmmmmmmmm' , c.password_hash);
+
+select COUNT(id) from reparations;

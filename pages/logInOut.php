@@ -1,21 +1,17 @@
-
 <?php 
-
 
 include("../php/database.php");
 include("../php/popup.php");
 
-$query = "select id, nom from communes";
+$query = "select id, nom from communes ORDER BY nom ASC";
 $stmt = $db->prepare($query);
 $stmt->execute();
 $communes = $stmt->fetchAll();
-
 
 $query = "select id, code_postal, commune_id from codes_postaux";
 $stmt = $db->prepare($query);
 $stmt->execute();
 $codes_postaux = $stmt->fetchAll();
-
 
 ?>
 
@@ -34,19 +30,15 @@ $codes_postaux = $stmt->fetchAll();
 
 <body>
 
-
    <div class="overlay">
-
 
       <div class='container <?php if ($_GET["error"] == "OK") echo "active" ?> ' id="container">
 
-
-
          <div class="left">
 
-            <p id="switch">Vous avez deja un compte ?</p>
+            <p id="switch">Vous avez déjà un compte ?</p>
 
-            <h3>Insciption</h3>
+            <h3>Inscription</h3>
 
             <form action="../php/register.php" method="POST">
 
@@ -61,7 +53,7 @@ $codes_postaux = $stmt->fetchAll();
                </div>
 
                <div class="field">
-                  <input type="email" placeholder=" " required id="mailInput" name="mail">
+                  <input type="email" placeholder=" " required name="mail">
                   <label for="">Email</label>
                </div>
 
@@ -76,31 +68,21 @@ $codes_postaux = $stmt->fetchAll();
                </div>
 
                <div class="field">
-                  <input list="villeList" type="text" placeholder=" " required id="villeInput" >
+                  <select id="villeSelect" name="ville" required>
+                     <option value="">-- Sélectionnez une ville --</option>
+                     <?php foreach ($communes as $commune) { ?>
+                        <option value="<?= $commune['id'] ?>"><?= $commune['nom'] ?></option>
+                     <?php } ?>
+                  </select>
                   <label for="">Ville</label>
-
-                  <input type="hidden" id="villeInputHidden" name="ville">
-
                </div>
-
-               <datalist id="villeList">
-
-                  <?php foreach ($communes as $commune) { ?>
-                     <option value="<?= $commune['nom'] ?>"></option>
-                  <?php } ?>
-                  
-               </datalist>
 
                <div class="field">
-                  <input type="text" placeholder=" " required list="codeList" id="codeInput" >
+                  <select id="codeSelect" name="code_postal" required>
+                     <option value="">-- Sélectionnez un code postal --</option>
+                  </select>
                   <label for="">Code postal</label>
-
-                  <input type="hidden" id="codeInputHidden" name="code_postal" >
                </div>
-
-               <datalist id="codeList">
-
-               </datalist>
 
                <div class="field">
                   <input type="password" placeholder=" " required id="mdpInput" minlength="8" name="mdp">
@@ -109,17 +91,14 @@ $codes_postaux = $stmt->fetchAll();
 
                <div class="field" id="fieldPassConf">
                   <input type="password" placeholder=" " required id="mdpConfInput" minlength="8" name="mdpConf">
-                  <label for="">Confirmer le mot de passe</label>
+                  <label for="">Confirmez le mot de passe</label>
                </div>
 
                <button type="submit">S'inscrire</button>
 
-
             </form>
 
          </div>
-
-
 
          <div class="right">
 
@@ -127,7 +106,6 @@ $codes_postaux = $stmt->fetchAll();
 
             <h3>Connexion</h3>
             <form action="../php/login.php" method="POST">
-
 
                <div class="field">
                   <input type="email" placeholder=" " required name="mail">
@@ -142,17 +120,11 @@ $codes_postaux = $stmt->fetchAll();
                <button type="submit">Connexion</button>
             </form>
 
-
-
          </div>
 
       </div>
 
-
-
    </div>
-
-
 
 </body>
 
@@ -163,123 +135,62 @@ const container = document.getElementById('container');
 const communes = <?php echo json_encode($communes); ?>;
 const codes_postaux = <?php echo json_encode($codes_postaux); ?>;
 
-const villeInput = document.getElementById('villeInput');
-const villeInputHidden = document.getElementById('villeInputHidden');
-
-const codeListInput = document.getElementById('codeList');
-
-const codeInput = document.getElementById('codeInput');
-const codeInputHidden = document.getElementById('codeInputHidden');
-
-const mailInput = document.getElementById('mailInput');
-
+const villeSelect = document.getElementById('villeSelect');
+const codeSelect = document.getElementById('codeSelect');
 
 const mdpInput = document.getElementById('mdpInput');
 const mdpConfInput = document.getElementById('mdpConfInput');
-const fieldPassConf = document.getElementById('fieldPassConf'); 
-
-
-console.log(mailInput)
-
-
-console.log(allSwitch);
+const fieldPassConf = document.getElementById('fieldPassConf');
 
 allSwitch.forEach(element => {
-   
    element.addEventListener('click', () => {
-      console.log('clicked');
       container.classList.toggle('active');
    });
-   
 });
 
-
-villeInput.addEventListener('change', () => {
-   const ville = villeInput.value;
-   dataVille = communes.find(c => c.nom === ville);
-   villeInputHidden.value = dataVille.id;
-
-   const codes = codes_postaux
-      .filter(c => c.commune_id == dataVille.id)
-      .map(c => c.code_postal);
-
-   console.log(codes);
-
-   codeListInput.innerHTML = '';
-   codes.forEach(code => {
+villeSelect.addEventListener('change', () => {
+   const villeId = villeSelect.value;
+   codeSelect.innerHTML = '<option value="">-- Sélectionnez un code postal --</option>';
+   const codes = codes_postaux.filter(c => c.commune_id == villeId);
+   codes.forEach(c => {
       const option = document.createElement('option');
-      option.value = code;
-      codeListInput.appendChild(option);
+      option.value = c.id;
+      option.textContent = c.code_postal;
+      codeSelect.appendChild(option);
    });
-})
-
-codeInput.addEventListener('change', () => {
-   console.log('code changed to: ' + codeInput.value);
-   const code = codeInput.value;
-   console.log(codes_postaux);
-   codeId = codes_postaux.find(c => c.code_postal == code).id;
-   console.log(codeId);
-   codeInputHidden.value = codeId;
-})
-
-
-mailInput.addEventListener('change', () => {
-   console.log(mail.contain("@"));
-   console.log('Mail changed to: ' + mail);
 });
-
-
-console.log('mdpInput:', mdpInput);
 
 mdpInput.addEventListener('input', () => {
-
-   console.log('mdp changed to: ' + mdpInput.value);
-   console.log('mdpConf is: ' + mdpConfInput.value);
-
    if(mdpInput.value.length < 8) {
       mdpInput.classList.add('error');
       mdpInput.classList.remove('good');
-   }else {
+   } else {
       mdpInput.classList.add('good');
       mdpInput.classList.remove('error');
    }
 
    if(mdpInput.value !== mdpConfInput.value) {
       mdpConfInput.setCustomValidity("Les mots de passe ne correspondent pas");
-
       fieldPassConf.classList.add('error');
-      fieldPassConf.classList.remove("good")
-
+      fieldPassConf.classList.remove("good");
    } else {
       mdpConfInput.setCustomValidity("");
-
       fieldPassConf.classList.remove('error');
-      fieldPassConf.classList.add("good")
-
+      fieldPassConf.classList.add("good");
    }
 });
 
 mdpConfInput.addEventListener('input', () => {
-
-   console.log('mdp changed to: ' + mdpInput.value);
-   console.log('mdpConf is: ' + mdpConfInput.value);
-
    if(mdpInput.value !== mdpConfInput.value) {
       mdpConfInput.setCustomValidity("Les mots de passe ne correspondent pas");
-
       fieldPassConf.classList.add('error');
-      fieldPassConf.classList.remove("good")
-
+      fieldPassConf.classList.remove("good");
    } else {
       mdpConfInput.setCustomValidity("");
-
       fieldPassConf.classList.remove('error');
-      fieldPassConf.classList.add("good")
-
+      fieldPassConf.classList.add("good");
    }
 });
-
-
 </script>
 
 </html>

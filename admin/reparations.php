@@ -36,7 +36,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
     <title>Document</title>
 
     <link rel="stylesheet" href="../assets/admin/css/nav.css">
-    <link rel="stylesheet" href="../assets/admin/css/reparation.css">
+    <link rel="stylesheet" href="../assets/admin/css/reparations.css">
 </head>
 <body>
 
@@ -65,28 +65,28 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
 
     <table>
         <thead>
-            <th>id</th>
-            <th>type</th>
-            <th>marque</th>
-            <th>modele</th>
-            <th>objet</th>
-            <th>description</th>
-            <th>user</th>
+            <th>Id</th>
+            <th>Type</th>
+            <th>Marque</th>
+            <th>Modele</th>
+            <th>Objet</th>
+            <th>Description</th>
+            <th>User</th>
             <th>Numero de serie</th>
-            <th>imei</th>
+            <th>IMEI</th>
         </thead>
         <tbody>
             <?php foreach($reparations as $reparation): ?>
-                <tr>
-                    <td> <?= $reparation['id'] ?> </td>
-                    <td> <?= $reparation['type'] ?> </td>
-                    <td> <?= $reparation['marque'] ?> </td>
-                    <td> <?= $reparation['modele'] ?> </td>
-                    <td> <?= $reparation['object'] ?> </td>
+                <tr onclick="window.location.href='./reparation.php?id=<?= $reparation['id'] ?>'">
+                    <td title=" <?= htmlspecialchars($reparation['id']) ?> " > <?= $reparation['id'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['type']) ?> " > <?= $reparation['type'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['marque']) ?> " > <?= $reparation['marque'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['modele']) ?> " > <?= $reparation['modele'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['object']) ?> " > <?= $reparation['object'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['description']) ?> " > <?= $reparation['description'] ?> </td>
-                    <td> <?= $reparation['user'] ?> </td>
-                    <td> <?= $reparation['serie'] ?> </td>
-                    <td> <?= $reparation['imei'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['user']) ?> " > <?= $reparation['user'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['serie']) ?> " > <?= $reparation['serie'] ?> </td>
+                    <td title=" <?= htmlspecialchars($reparation['imei']) ?> " > <?= $reparation['imei'] ?> </td>
                 </tr>
             <?php endforeach ?>
         </tbody>

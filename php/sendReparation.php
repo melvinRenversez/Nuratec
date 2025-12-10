@@ -4,9 +4,6 @@ session_start();
 include("./verifyUser.php");
 include("./database.php");
 
-
-var_dump($_POST);
-
 $user = $_SESSION["user_id"];
 $type = $_POST["type"];
 $marque = $_POST["marque"];
@@ -17,8 +14,7 @@ $prise = $priseText = implode(", ", $_POST["prise"]);
 $description = $_POST["description"];
 
 
-echo '<br>';
-var_dump($prise);
+
 
 
 $query = "
@@ -36,6 +32,8 @@ $stmt->execute(array(
     ':imei' => $imei,
     ':description' => $description
 ));
+
+
 
 
 $_SESSION["popup"] = true;

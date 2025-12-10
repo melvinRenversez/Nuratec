@@ -89,14 +89,14 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
     
     <table>
         <thead>
-            <th>type</th>
-            <th>marque</th>
-            <th>modele</th>
-            <th>objet</th>
-            <th>description</th>
-            <th>Numero de serie</th>
-            <th>imei</th>
-            <th>Envoyer</th>
+            <th>Type</th>
+            <th>Marque</th>
+            <th>Modele</th>
+            <th>Objet</th>
+            <th>Description</th>
+            <th>Numero de série</th>
+            <th>IMEI</th>
+            <th>Envoyée</th>
         </thead>
         <tbody>
             <?php foreach($reparations as $reparation): ?>

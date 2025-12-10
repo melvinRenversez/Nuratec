@@ -101,11 +101,11 @@ $ListeMarque = $stmt->fetchAll();
     <div class="add">
         <form action="../php/admin/addModele.php" method="POST">
 
-            <h3>Ajouter une marque</h3>
+            <h3>Ajouter un modele</h3>
 
             <div class="field s">
 
-                <select id="type-select">
+                <select id="type-select" required>
                     <option value=""> -- Choisir un type --</option>
                     <?php foreach ($ListeType as $lt) { ?>
                         <option value="<?= $lt['id'] ?>"><?= $lt['libelle'] ?></option>
@@ -118,7 +118,7 @@ $ListeMarque = $stmt->fetchAll();
 
             <div class="field s">
 
-                <select name="marque" id="marque-select">
+                <select name="marque" id="marque-select" required>
                 </select>
 
                 <label for="">Marque de l'appareil</label>
@@ -126,8 +126,8 @@ $ListeMarque = $stmt->fetchAll();
             </div>
 
             <div class="field">
-                <input type="text" placeholder=" " name="name">
-                <label for="">Nom de la marque</label>
+                <input type="text" placeholder=" " name="name" required>
+                <label for="">Nom du modele</label>
             </div>
             <button type="submit">Ajouter</button>
 

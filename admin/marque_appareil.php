@@ -96,7 +96,8 @@ $ListeType = $stmt->fetchAll();
 
                 <div class="field s">
 
-                    <select name="type" id="">
+                    <select name="type" id="" required>
+                    <option value=""> -- Choisir un type --</option>
                         <?php foreach ($ListeType as $lt) { ?>
                             <option value="<?= $lt['id'] ?>"><?= $lt['libelle'] ?></option>
                         <?php } ?>
@@ -107,7 +108,7 @@ $ListeType = $stmt->fetchAll();
                 </div>
 
                 <div class="field">
-                    <input type="text" placeholder=" " name="name">
+                    <input type="text" placeholder=" " name="name" required>
                     <label for="">Nom de la marque</label>
                 </div>
                 <button type="submit">Ajouter</button>

@@ -88,7 +88,7 @@ $Liste = $stmt->fetchAll();
             <h3>Ajouter un type</h3>
 
                 <div class="field">
-                    <input type="text" placeholder=" " name="name">
+                    <input type="text" placeholder=" " name="name" required>
                     <label for="">Nom du type d'appareil</label>
                 </div>
                 <button type="submit">Ajouter</button>
