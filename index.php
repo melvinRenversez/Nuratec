@@ -59,31 +59,34 @@ $modeleListe = $stmt->fetchAll();
          <?php
          if (isset($_SESSION["user_id"])) {
             ?>
-            <li>
-               <a href="./pages/myReparation.php">Mes reparation</a>
-            </li>
-            <li>
-               <a href="./pages/reparation.php">Reparation</a>
-            </li>
-            <li>
-               <a href="./pages/account.php">Mon compte</a>
-            </li>
-            <li>
-               <a href="./php/logout.php">Deconnection</a>
-            </li>
-            <?php
+               <li>
+                  <a href="./pages/myReparation.php">Mes reparation</a>
+               </li>
+               <li>
+                  <a href="./pages/reparation.php">Reparation</a>
+               </li>
+               <li>
+                  <a href="./pages/account.php">Mon compte</a>
+               </li>
+               <li>
+                  <a href="./php/logout.php">Deconnection</a>
+               </li>
+               <?php
          } else {
             ?>
 
 
-   <li>
-      <a href="./admin/index.php">Admin login</a>
-   </li>
-   <li>
-      <a href="./pages/logInOut.php">Connection</a>
-   </li>
+      <li>
+         <a href="./admin/index.php">Admin login</a>
+      </li>
+      <li>
+         <a href="./pages/inscription.php">Inscription</a>
+      </li>
+      <li>
+         <a href="./pages/connection.php">Connection</a>
+      </li>
 
-   <?php
+      <?php
          }
          ?>
       </ul>
@@ -103,7 +106,7 @@ $modeleListe = $stmt->fetchAll();
             <select name="type" id="type-select">
                <option value=""> -- Type d'appareil --</option>
                <?php foreach ($typeListe as $key => $type): ?>
-                     <option value="<?php echo $type["id"]; ?>"><?php echo $type["libelle"]; ?></option>   
+                        <option value="<?php echo $type["id"]; ?>"><?php echo $type["libelle"]; ?></option>   
                <?php endforeach; ?>
             </select>
          </div>
@@ -137,7 +140,7 @@ $modeleListe = $stmt->fetchAll();
    </section>
 
 
-      <section class="reprise">
+      <!-- <section class="reprise">
             <div class="reprise-content">
                <span class="rep-text">
                   <h5>
@@ -154,7 +157,7 @@ $modeleListe = $stmt->fetchAll();
                   </svg>
                </div>
             </div>
-   </section>
+   </section> -->
 
 </body>
 

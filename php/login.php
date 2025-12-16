@@ -31,7 +31,7 @@ $result = $stmt->fetch();
 $_SESSION["popup"] = true;
 if ( $result ) {
     if ( !$result[ 'activated' ] ) {
-        header( 'Location: ../pages/logInOut.php?popup=notActivated' );
+        header( 'Location: ../pages/connection.php?popup=notActivated' );
         exit();
     }else {
         session_start();
@@ -40,7 +40,7 @@ if ( $result ) {
         exit();
     }
 } else {
-    header( 'Location: ../pages/logInOut.php?popup=wrongCredentials' );
+    header( 'Location: ../pages/connection.php?popup=wrongCredentials' );
     exit();
 }
 

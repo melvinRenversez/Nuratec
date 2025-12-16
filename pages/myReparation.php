@@ -19,7 +19,7 @@ if ($plusPage > $limit) {
 }
 
 
-$reparations = $db->query("select ty.libelle as type, ma.libelle as marque, mo.libelle as modele, re.prise_en_charge as object, re.description, serie, imei, re.created_at as date
+$reparations = $db->query("select ty.libelle as type, ma.libelle as marque, mo.libelle as modele, re.prise_en_charge as object, re.description, serie, imei, re.created_at as date, re.total 
 from reparations re
 join users us on us.id = re.user_id
 join type_appareil ty on ty.id = re.type_id
@@ -96,6 +96,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
             <th>Description</th>
             <th>Numero de série</th>
             <th>IMEI</th>
+            <th>Prix</th>
             <th>Envoyée</th>
         </thead>
         <tbody>
@@ -108,6 +109,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
                     <td title=" <?= htmlspecialchars($reparation['description']) ?> " > <?= $reparation['description'] ?> </td>
                     <td> <?= $reparation['serie'] ?> </td>
                     <td> <?= $reparation['imei'] ?> </td>
+                    <td> <?= $reparation['total'] ?> €</td>
                     <td> <?= formater_date($reparation['date']) ?> </td>
                 </tr>
             <?php endforeach ?>

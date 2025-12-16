@@ -9,13 +9,25 @@
     grid-template-rows: repeat(2, 1fr);
 
     grid-template-areas:
-        "ty ty ty ty ma ma ma ma ma ma re re re re re"
-        "mo mo mo mo mo mo pr pr pr pr re re re re re"
+        "ty ty ty ma ma ma ma ma ma mo mo mo mo mo mo"
+        "pr pr pr pr pr pr pr re re re re re re re re"
     ;
+
+
+     /* "ty ty ty ty ma ma ma ma ma ma re re re re re"
+        "mo mo mo mo mo mo pr pr pr pr re re re re re" */
 
     padding: 30px;
     gap: 30px;
 
+}
+
+.id {
+   width: 50px;
+}
+
+.total {
+   width: 100px;
 }
 
 .type_appareil {

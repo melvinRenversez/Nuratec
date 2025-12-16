@@ -18,7 +18,7 @@ if ($plusPage > $limit) {
 }
 
 
-$reparations = $db->query("select re.id, ty.libelle as type, ma.libelle as marque, mo.libelle as modele, re.prise_en_charge as object, re.description, concat(concat(us.nom, ' '), us.prenom) as user, serie, imei
+$reparations = $db->query("select re.id, ty.libelle as type, ma.libelle as marque, mo.libelle as modele, re.prise_en_charge as object, re.description, concat(concat(us.nom, ' '), us.prenom) as user, serie, imei, total
 from reparations re
 join users us on us.id = re.user_id
 join type_appareil ty on ty.id = re.type_id
@@ -52,6 +52,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
     <li><a href="./modele_appareil.php">Modele d'appareil</a></li>
     <li><a href="./prise_en_charge.php">Prise en charge</a></li>
     <li class='actif'><a href="./reparations.php">Reparations</a></li>
+    <li><a href="./users.php">Users</a></li>
 
     <div class="gap"></div>
 
@@ -65,7 +66,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
 
     <table>
         <thead>
-            <th>Id</th>
+            <th class="id">Id</th>
             <th>Type</th>
             <th>Marque</th>
             <th>Modele</th>
@@ -74,11 +75,12 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
             <th>User</th>
             <th>Numero de serie</th>
             <th>IMEI</th>
+            <th class="total">Total</th>
         </thead>
         <tbody>
             <?php foreach($reparations as $reparation): ?>
                 <tr onclick="window.location.href='./reparation.php?id=<?= $reparation['id'] ?>'">
-                    <td title=" <?= htmlspecialchars($reparation['id']) ?> " > <?= $reparation['id'] ?> </td>
+                    <td class="id" title=" <?= htmlspecialchars($reparation['id']) ?> " > <?= $reparation['id'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['type']) ?> " > <?= $reparation['type'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['marque']) ?> " > <?= $reparation['marque'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['modele']) ?> " > <?= $reparation['modele'] ?> </td>
@@ -87,6 +89,7 @@ LIMIT $offset , $range;")->fetchAll(PDO::FETCH_ASSOC);
                     <td title=" <?= htmlspecialchars($reparation['user']) ?> " > <?= $reparation['user'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['serie']) ?> " > <?= $reparation['serie'] ?> </td>
                     <td title=" <?= htmlspecialchars($reparation['imei']) ?> " > <?= $reparation['imei'] ?> </td>
+                    <td class="total"title=" <?= htmlspecialchars($reparation['total']) ?> " > <?= $reparation['total'] ?> €</td>
                 </tr>
             <?php endforeach ?>
         </tbody>

@@ -41,6 +41,7 @@ $Liste = $stmt->fetchAll();
             <li><a href="./modele_appareil.php">Modele d'appareil</a></li>
             <li><a href="./prise_en_charge.php">Prise en charge</a></li>
             <li><a href="./reparations.php">Reparations</a></li>
+    <li><a href="./users.php">Users</a></li>
 
             <div class="gap"></div>
 

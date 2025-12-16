@@ -44,6 +44,8 @@ if (isset($_GET["popup"]) && $_SESSION["popup"] == true) {
       echo "<div class='popup'>Veuillez activer votre compte pour vous connecter</div>";
    }else if(isset($_GET["popup"]) && $_GET["popup"] == "connRequired"){
       echo "<div class='popup'>Vous devez etre connecter pour fair cette action</div>";
+   }else if(isset($_GET["popup"]) && $_GET["popup"] == "accountDropped"){
+      echo "<div class='popup'>Votre compte a bien ete supprime</div>";
    }
 }
 

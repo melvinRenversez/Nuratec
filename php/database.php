@@ -1,9 +1,9 @@
 <?php
-$host = "192.168.0.100"; 
+$host = "localhost"; 
 $port = "3306";      
 $dbname = "nuratec";
-$username = "nuratec_user";
-$password = "Nura!Ec2025#Db";
+$username = "root";
+$password = "mysqlpassword";
 
 try {
    $db = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8",$username, $password);

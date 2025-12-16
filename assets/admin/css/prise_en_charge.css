@@ -1,21 +1,29 @@
 .container {
    display: grid;
 
-   grid-template-columns: repeat(8, 1fr);
-   grid-template-rows: repeat(6, 1fr);
+   grid-template-columns: repeat(14, 1fr);
+   grid-template-rows: repeat(10, 1fr);
 
    grid-template-areas:
-      '. . . . . . . .'
-      '. t t t . . . .'
-      '. t t t . a a .'
-      '. t t t . a a .'
-      '. t t t . . . .'
-      '. . . . . . . .'
+      '. . . . . . . . . . . . . .'
+      '. t t t t t t t t . . . . .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . a a a .'
+      '. t t t t t t t t . . . . .'
+      '. . . . . . . . . . . . . .'
    ;
 
    
    gap: 10px;
 
+}
+
+.id {
+   width: 50px;
 }
 
 .table {
@@ -223,7 +231,7 @@ table td {
 
    cursor: pointer;
 
-   width: 90%;
+   width: 100%;
 
 }
 

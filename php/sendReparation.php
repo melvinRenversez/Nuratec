@@ -12,14 +12,17 @@ $serie = $_POST["serie"];
 $imei = $_POST["imei"];
 $prise = $priseText = implode(", ", $_POST["prise"]);
 $description = $_POST["description"];
+$total = $_POST["total"];
 
 
+
+echo $total;
 
 
 
 $query = "
-insert into reparations(user_id, type_id, marque_id, modele_id, prise_en_charge, serie, imei, description) VALUES
-(:user, :type, :marque, :model, :prise, :serie, :imei, :description)";
+insert into reparations(user_id, type_id, marque_id, modele_id, total, prise_en_charge, serie, imei, description) VALUES
+(:user, :type, :marque, :model, :total, :prise, :serie, :imei, :description)";
 $stmt = $db->prepare($query);
 
 $stmt->execute(array(
@@ -27,6 +30,7 @@ $stmt->execute(array(
     ':type' => $type,
     ':marque' => $marque,
     ':model' => $model,
+    ':total' => $total,
     ':prise' => $prise,
     ':serie' => $serie,
     ':imei' => $imei,

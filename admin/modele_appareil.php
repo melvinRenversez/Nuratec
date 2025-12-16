@@ -47,13 +47,14 @@ $ListeMarque = $stmt->fetchAll();
             <li><a href="./home.php">Home</a></li>
             <li><a href="./type_appareil.php">Type d'appareil</a></li>
             <li><a href="./marque_appareil.php">Marque d'appareil</a></li>
-            <li class='actif'><a href="./modele_appareil.php">Modele d'appareil</a></li>
+            <li class='actif'><a href="./modele_appareil.php">Modèle d'appareil</a></li>
             <li><a href="./prise_en_charge.php">Prise en charge</a></li>
-            <li><a href="./reparations.php">Reparations</a></li>
+            <li><a href="./reparations.php">Réparations</a></li>
+    <li><a href="./users.php">Users</a></li>
 
             <div class="gap"></div>
 
-            <li><a href="../php/logout.php">Deconnection</a></li>
+            <li><a href="../php/logout.php">Déconnexion</a></li>
         </ul>
 
     </nav>
@@ -67,7 +68,7 @@ $ListeMarque = $stmt->fetchAll();
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>modele</th>
+                        <th>modèle</th>
                         <th>marque</th>
                         <th>type</th>
                     </tr>
@@ -101,7 +102,7 @@ $ListeMarque = $stmt->fetchAll();
     <div class="add">
         <form action="../php/admin/addModele.php" method="POST">
 
-            <h3>Ajouter un modele</h3>
+            <h3>Ajouter un modèle</h3>
 
             <div class="field s">
 
@@ -127,7 +128,7 @@ $ListeMarque = $stmt->fetchAll();
 
             <div class="field">
                 <input type="text" placeholder=" " name="name" required>
-                <label for="">Nom du modele</label>
+                <label for="">Nom du modèle</label>
             </div>
             <button type="submit">Ajouter</button>
 
@@ -135,7 +136,7 @@ $ListeMarque = $stmt->fetchAll();
     </div>
 
     <div class="conf" id="conf">
-        <span id="confText">Etes vous sur de vouloir suprimmer l element n¤1</span>
+        <span id="confText">Etes vous sur de vouloir suprimmer l'élément n¤1</span>
         <div class="buttons">
             <button onclick="confDelete()">Oui</button>
             <button onclick="cancelDelete()">Non</button>
